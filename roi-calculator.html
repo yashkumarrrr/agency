@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Step2Dev ROI Calculator - See Your Savings</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+:root {
+  --blue: #1E3A8A;
+  --blue-dark: #0a1850;
+  --blue-light: #2d5be3;
+  --orange: #F97316;
+  --orange-light: #fb923c;
+  --white: #fff;
+  --gray-50: #f8fafc;
+  --gray-100: #f1f5f9;
+  --gray-200: #e2e8f0;
+  --gray-400: #94a3b8;
+  --gray-600: #475569;
+  --gray-800: #1e293b;
+  --green: #16a34a;
+  --green-bg: #f0fdf4;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: linear-gradient(140deg, #060f35 0%, #0d2060 50%, #1E3A8A 100%);
+  min-height: 100vh;
+  padding: 40px 20px;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+  background-size: 64px 64px;
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 40px;
+  animation: fadeInDown 0.8s ease;
+}
+
+.logo {
+  font-family: 'Syne', sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--white);
+  margin-bottom: 10px;
+}
+
+.logo span {
+  color: var(--orange);
+}
+
+.header h1 {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 800;
+  color: var(--white);
+  margin-bottom: 15px;
+  line-height: 1.2;
+}
+
+.header h1 em {
+  font-style: normal;
+  color: var(--orange);
+}
+
+.header p {
+  color: rgba(255,255,255,0.7);
+  font-size: 1.1rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.calculator-wrapper {
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+@media (max-width: 1100px) {
+  .calculator-wrapper {
+    grid-template-columns: 1fr;
+  }
+}
+
+.controls-panel {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 24px;
+  padding: 30px;
+  backdrop-filter: blur(12px);
+  animation: fadeInLeft 0.8s ease;
+  height: fit-content;
+}
+
+.control-group {
+  margin-bottom: 25px;
+}
+
+.control-group label {
+  display: block;
+  color: rgba(255,255,255,0.85);
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+
+.control-group select,
+.control-group input[type="number"] {
+  width: 100%;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 12px;
+  padding: 12px 16px;
+  color: var(--white);
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s;
+}
+
+.control-group select option {
+  background: #0d2060;
+  color: var(--white);
+}
+
+.control-group select:focus,
+.control-group input:focus {
+  border-color: var(--orange);
+  background: rgba(255,255,255,0.12);
+}
+
+.slider-container {
+  position: relative;
+}
+
+.slider {
+  width: 100%;
+  height: 8px;
+  border-radius: 5px;
+  background: rgba(255,255,255,0.1);
+  outline: none;
+  -webkit-appearance: none;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--orange), #ea580c);
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(249,115,22,0.5);
+  transition: transform 0.2s;
+}
+
+.slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+.slider::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--orange), #ea580c);
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 4px 12px rgba(249,115,22,0.5);
+}
+
+.slider-value {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.6);
+}
+
+.slider-value .current {
+  font-weight: 700;
+  color: var(--orange);
+  font-size: 1.1rem;
+}
+
+.team-builder {
+  margin-top: 30px;
+  padding-top: 25px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.team-builder h3 {
+  color: var(--white);
+  font-size: 1rem;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.team-member {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 10px;
+  background: rgba(255,255,255,0.04);
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.team-member select {
+  flex: 1;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 8px;
+  padding: 8px 12px;
+  color: var(--white);
+  font-size: 0.85rem;
+}
+
+.team-member input {
+  width: 50px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 8px;
+  padding: 8px;
+  color: var(--white);
+  text-align: center;
+  font-size: 0.85rem;
+}
+
+.remove-member-btn {
+  background: rgba(239,68,68,0.15);
+  border: 1px solid rgba(239,68,68,0.3);
+  color: #ef4444;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.75rem;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.remove-member-btn:hover {
+  background: rgba(239,68,68,0.25);
+}
+
+.add-member-btn {
+  width: 100%;
+  background: rgba(249,115,22,0.15);
+  border: 1px solid rgba(249,115,22,0.3);
+  color: var(--orange);
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.3s;
+  margin-top: 10px;
+}
+
+.add-member-btn:hover {
+  background: rgba(249,115,22,0.25);
+  transform: translateY(-2px);
+}
+
+.results-panel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  animation: fadeInRight 0.8s ease;
+}
+
+@media (max-width: 768px) {
+  .results-panel {
+    grid-template-columns: 1fr;
+  }
+}
+
+.stat-card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 20px;
+  padding: 25px;
+  backdrop-filter: blur(8px);
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--orange), var(--blue-light));
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+}
+
+.stat-card:hover::before {
+  opacity: 1;
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.stat-value {
+  font-family: 'Syne', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--white);
+  margin-bottom: 5px;
+  line-height: 1;
+}
+
+.stat-value.highlight {
+  color: var(--orange);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.stat-value.success {
+  color: #4ade80;
+}
+
+.stat-subtitle {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.5);
+}
+
+.chart-card {
+  grid-column: 1 / -1;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 20px;
+  padding: 30px;
+  backdrop-filter: blur(8px);
+}
+
+.chart-card h3 {
+  color: var(--white);
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-top: 40px;
+  animation: fadeInUp 1s ease;
+}
+
+.benefit-card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 18px;
+  padding: 25px;
+  backdrop-filter: blur(8px);
+  transition: all 0.3s;
+}
+
+.benefit-card:hover {
+  transform: translateY(-5px);
+  background: rgba(255,255,255,0.09);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+}
+
+.benefit-icon {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, var(--orange), #ea580c);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+}
+
+.benefit-title {
+  font-weight: 700;
+  color: var(--white);
+  font-size: 1.05rem;
+  margin-bottom: 8px;
+}
+
+.benefit-desc {
+  color: rgba(255,255,255,0.65);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.cta-section {
+  text-align: center;
+  margin-top: 50px;
+  padding: 40px;
+  background: rgba(249,115,22,0.1);
+  border: 1px solid rgba(249,115,22,0.3);
+  border-radius: 24px;
+  backdrop-filter: blur(8px);
+  animation: fadeInUp 1.2s ease;
+}
+
+.cta-section h2 {
+  font-family: 'Syne', sans-serif;
+  font-size: 2rem;
+  color: var(--white);
+  margin-bottom: 15px;
+}
+
+.cta-section p {
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 25px;
+  font-size: 1.1rem;
+}
+
+.cta-button {
+  display: inline-block;
+  background: var(--orange);
+  color: var(--white);
+  padding: 16px 40px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  text-decoration: none;
+  transition: all 0.3s;
+  box-shadow: 0 10px 30px rgba(249,115,22,0.4);
+}
+
+.cta-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(249,115,22,0.6);
+  background: var(--orange-light);
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.comparison-table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+}
+
+.comparison-table th,
+.comparison-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.comparison-table th {
+  color: rgba(255,255,255,0.7);
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.comparison-table td {
+  color: var(--white);
+  font-size: 0.95rem;
+}
+
+.comparison-table .local-cost {
+  color: #ef4444;
+}
+
+.comparison-table .step2dev-cost {
+  color: #4ade80;
+  font-weight: 700;
+}
+
+.savings-badge {
+  background: var(--green-bg);
+  color: var(--green);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.role-badge {
+  display: inline-block;
+  background: rgba(45,91,227,0.15);
+  color: #93bbff;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  margin-left: 8px;
+}
+</style>
+</head>
+<body>
+<div class="hero-grid"></div>
+
+<div class="container">
+  <div class="header">
+    <div class="logo">Step<span>2Dev</span></div>
+    <h1>Calculate Your <em>Engineering Cost Savings</em></h1>
+    <p>See exactly how much you'll save by building your team with Step2Dev. Real market salaries across 5 countries.</p>
+  </div>
+
+  <div class="calculator-wrapper">
+    <div class="controls-panel">
+      <div class="control-group">
+        <label>📍 Your Location</label>
+        <select id="location">
+          <option value="france">🇫🇷 France</option>
+          <option value="germany">🇩🇪 Germany</option>
+          <option value="uk">🇬🇧 United Kingdom</option>
+          <option value="usa">🇺🇸 United States</option>
+          <option value="switzerland">🇨🇭 Switzerland</option>
+        </select>
+      </div>
+
+      <div class="control-group">
+        <label>⏱️ Project Duration</label>
+        <div class="slider-container">
+          <input type="range" min="3" max="36" value="12" class="slider" id="duration">
+          <div class="slider-value">
+            <span>3 mo</span>
+            <span class="current" id="durationValue">12 months</span>
+            <span>36 mo</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-builder">
+        <h3>👥 Build Your Dream Team</h3>
+        <div id="teamMembers">
+          <div class="team-member">
+            <select class="role-select">
+              <option value="devops-senior">DevOps Engineer (Senior)</option>
+              <option value="devops-mid">DevOps Engineer (Mid)</option>
+              <option value="devops-junior">DevOps Engineer (Junior)</option>
+              <option value="fullstack-senior" selected>Full-Stack Dev (Senior)</option>
+              <option value="fullstack-mid">Full-Stack Dev (Mid)</option>
+              <option value="fullstack-junior">Full-Stack Dev (Junior)</option>
+              <option value="backend-senior">Backend Dev (Senior)</option>
+              <option value="backend-mid">Backend Dev (Mid)</option>
+              <option value="backend-junior">Backend Dev (Junior)</option>
+              <option value="frontend-senior">Frontend Dev (Senior)</option>
+              <option value="frontend-mid">Frontend Dev (Mid)</option>
+              <option value="frontend-junior">Frontend Dev (Junior)</option>
+              <option value="data-senior">Data Engineer (Senior)</option>
+              <option value="data-mid">Data Engineer (Mid)</option>
+              <option value="data-junior">Data Engineer (Junior)</option>
+              <option value="marketing-senior">Digital Marketer (Senior)</option>
+              <option value="marketing-mid">Digital Marketer (Mid)</option>
+              <option value="marketing-junior">Digital Marketer (Junior)</option>
+            </select>
+            <input type="number" value="1" min="1" max="20" class="quantity-input">
+            <button class="remove-member-btn" onclick="removeTeamMember(this)" style="display:none;">✕</button>
+          </div>
+        </div>
+        <button class="add-member-btn" onclick="addTeamMember()">+ Add Another Role</button>
+      </div>
+    </div>
+
+    <div class="results-panel">
+      <div class="stat-card">
+        <div class="stat-label">Total Local Cost</div>
+        <div class="stat-value" id="localCost">€234,000</div>
+        <div class="stat-subtitle">Traditional hiring in your region</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-label">Step2Dev Cost</div>
+        <div class="stat-value success" id="step2devCost">€39,600</div>
+        <div class="stat-subtitle">Fully managed offshore team</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-label">💰 Your Total Savings</div>
+        <div class="stat-value highlight" id="totalSavings">€194,400</div>
+        <div class="stat-subtitle" id="savingsPercent">83% cost reduction</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-label">⚡ ROI Timeline</div>
+        <div class="stat-value" id="roiTimeline">Immediate</div>
+        <div class="stat-subtitle">Savings start from month 1</div>
+      </div>
+
+      <div class="chart-card">
+        <h3>📊 Cost Comparison Over Time</h3>
+        <canvas id="costChart"></canvas>
+      </div>
+
+      <div class="chart-card">
+        <h3>💼 Your Team Breakdown</h3>
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Role</th>
+              <th>Qty</th>
+              <th>Local Cost/mo</th>
+              <th>Step2Dev Cost/mo</th>
+              <th>Savings/mo</th>
+            </tr>
+          </thead>
+          <tbody id="teamBreakdown">
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="benefits-grid">
+    <div class="benefit-card">
+      <div class="benefit-icon">🌍</div>
+      <div class="benefit-title">Global Talent Pool</div>
+      <div class="benefit-desc">Access India's top 5% of engineers - pre-vetted, English-fluent, and ready to ship from day one.</div>
+    </div>
+
+    <div class="benefit-card">
+      <div class="benefit-icon">🚀</div>
+      <div class="benefit-title">48-Hour Onboarding</div>
+      <div class="benefit-desc">From first call to code commit in 2 days. No lengthy hiring pipelines or recruitment delays.</div>
+    </div>
+
+    <div class="benefit-card">
+      <div class="benefit-icon">🔒</div>
+      <div class="benefit-title">100% Compliant & Secure</div>
+      <div class="benefit-desc">NDA, GDPR-compliant, IP protection, and international contracts. Your code is safe with us.</div>
+    </div>
+
+    <div class="benefit-card">
+      <div class="benefit-icon">📈</div>
+      <div class="benefit-title">Scale Instantly</div>
+      <div class="benefit-desc">Go from 1 to 20 engineers in weeks. No severance risk. Pure startup-grade flexibility.</div>
+    </div>
+  </div>
+
+  <div class="cta-section">
+    <h2 id="ctaTitle">Ready to Save €194,400+ This Year?</h2>
+    <p>Book a free 30-min strategy call and get your first engineer matched in 48 hours.</p>
+    <a href="https://step2dev.com#contact" class="cta-button">🚀 Book Your Pilot Engineer Now</a>
+  </div>
+</div>
+
+<script>
+// Comprehensive salary data - Monthly fully loaded costs (includes salary, taxes, benefits, overhead)
+// Based on 2024-2025 market data from Glassdoor, Payscale, and LinkedIn Salary Insights
+const salaryData = {
+  // DevOps Engineers
+  'devops-senior': {
+    france: 7200, germany: 7000, uk: 6800, usa: 9500, switzerland: 9800,
+    step2dev: 1900
+  },
+  'devops-mid': {
+    france: 5000, germany: 4800, uk: 4600, usa: 6800, switzerland: 7200,
+    step2dev: 1300
+  },
+  'devops-junior': {
+    france: 3200, germany: 3000, uk: 2900, usa: 4500, switzerland: 5000,
+    step2dev: 800
+  },
+  
+  // Full-Stack Developers
+  'fullstack-senior': {
+    france: 6500, germany: 6200, uk: 5800, usa: 8000, switzerland: 8500,
+    step2dev: 1700
+  },
+  'fullstack-mid': {
+    france: 4500, germany: 4200, uk: 4000, usa: 5800, switzerland: 6200,
+    step2dev: 1100
+  },
+  'fullstack-junior': {
+    france: 2800, germany: 2600, uk: 2400, usa: 3800, switzerland: 4200,
+    step2dev: 650
+  },
+  
+  // Backend Developers
+  'backend-senior': {
+    france: 6800, germany: 6500, uk: 6000, usa: 8500, switzerland: 9000,
+    step2dev: 1800
+  },
+  'backend-mid': {
+    france: 4700, germany: 4400, uk: 4200, usa: 6200, switzerland: 6500,
+    step2dev: 1200
+  },
+  'backend-junior': {
+    france: 3000, germany: 2800, uk: 2600, usa: 4200, switzerland: 4500,
+    step2dev: 700
+  },
+  
+  // Frontend Developers
+  'frontend-senior': {
+    france: 6000, germany: 5700, uk: 5400, usa: 7500, switzerland: 8000,
+    step2dev: 1600
+  },
+  'frontend-mid': {
+    france: 4200, germany: 4000, uk: 3800, usa: 5500, switzerland: 5800,
+    step2dev: 1000
+  },
+  'frontend-junior': {
+    france: 2600, germany: 2400, uk: 2300, usa: 3500, switzerland: 3800,
+    step2dev: 600
+  },
+  
+  // Data Engineers
+  'data-senior': {
+    france: 7500, germany: 7200, uk: 6800, usa: 10000, switzerland: 10500,
+    step2dev: 2000
+  },
+  'data-mid': {
+    france: 5200, germany: 5000, uk: 4800, usa: 7200, switzerland: 7500,
+    step2dev: 1400
+  },
+  'data-junior': {
+    france: 3400, germany: 3200, uk: 3000, usa: 4800, switzerland: 5200,
+    step2dev: 850
+  },
+  
+  // Digital Marketers
+  'marketing-senior': {
+    france: 5500, germany: 5200, uk: 5000, usa: 7000, switzerland: 7500,
+    step2dev: 1400
+  },
+  'marketing-mid': {
+    france: 3800, germany: 3600, uk: 3400, usa: 5000, switzerland: 5400,
+    step2dev: 900
+  },
+  'marketing-junior': {
+    france: 2400, germany: 2200, uk: 2100, usa: 3200, switzerland: 3600,
+    step2dev: 550
+  }
+};
+
+const roleNames = {
+  'devops-senior': 'DevOps Engineer (Senior)',
+  'devops-mid': 'DevOps Engineer (Mid-Level)',
+  'devops-junior': 'DevOps Engineer (Junior)',
+  'fullstack-senior': 'Full-Stack Developer (Senior)',
+  'fullstack-mid': 'Full-Stack Developer (Mid-Level)',
+  'fullstack-junior': 'Full-Stack Developer (Junior)',
+  'backend-senior': 'Backend Developer (Senior)',
+  'backend-mid': 'Backend Developer (Mid-Level)',
+  'backend-junior': 'Backend Developer (Junior)',
+  'frontend-senior': 'Frontend Developer (Senior)',
+  'frontend-mid': 'Frontend Developer (Mid-Level)',
+  'frontend-junior': 'Frontend Developer (Junior)',
+  'data-senior': 'Data Engineer (Senior)',
+  'data-mid': 'Data Engineer (Mid-Level)',
+  'data-junior': 'Data Engineer (Junior)',
+  'marketing-senior': 'Digital Marketer (Senior)',
+  'marketing-mid': 'Digital Marketer (Mid-Level)',
+  'marketing-junior': 'Digital Marketer (Junior)'
+};
+
+let costChart = null;
+
+function addTeamMember() {
+  const container = document.getElementById('teamMembers');
+  const newMember = document.createElement('div');
+  newMember.className = 'team-member';
+  newMember.innerHTML = `
+    <select class="role-select">
+      <option value="devops-senior">DevOps Engineer (Senior)</option>
+      <option value="devops-mid">DevOps Engineer (Mid)</option>
+      <option value="devops-junior">DevOps Engineer (Junior)</option>
+      <option value="fullstack-senior">Full-Stack Dev (Senior)</option>
+      <option value="fullstack-mid">Full-Stack Dev (Mid)</option>
+      <option value="fullstack-junior">Full-Stack Dev (Junior)</option>
+      <option value="backend-senior">Backend Dev (Senior)</option>
+      <option value="backend-mid">Backend Dev (Mid)</option>
+      <option value="backend-junior">Backend Dev (Junior)</option>
+      <option value="frontend-senior">Frontend Dev (Senior)</option>
+      <option value="frontend-mid">Frontend Dev (Mid)</option>
+      <option value="frontend-junior">Frontend Dev (Junior)</option>
+      <option value="data-senior">Data Engineer (Senior)</option>
+      <option value="data-mid">Data Engineer (Mid)</option>
+      <option value="data-junior">Data Engineer (Junior)</option>
+      <option value="marketing-senior">Digital Marketer (Senior)</option>
+      <option value="marketing-mid">Digital Marketer (Mid)</option>
+      <option value="marketing-junior">Digital Marketer (Junior)</option>
+    </select>
+    <input type="number" value="1" min="1" max="20" class="quantity-input">
+    <button class="remove-member-btn" onclick="removeTeamMember(this)">✕</button>
+  `;
+  container.appendChild(newMember);
+  updateRemoveButtons();
+  calculate();
+}
+
+function removeTeamMember(btn) {
+  btn.parentElement.remove();
+  updateRemoveButtons();
+  calculate();
+}
+
+function updateRemoveButtons() {
+  const members = document.querySelectorAll('.team-member');
+  members.forEach((member, index) => {
+    const removeBtn = member.querySelector('.remove-member-btn');
+    if (members.length > 1) {
+      removeBtn.style.display = 'block';
+    } else {
+      removeBtn.style.display = 'none';
+    }
+  });
+}
+
+function calculate() {
+  const location = document.getElementById('location').value;
+  const duration = parseInt(document.getElementById('duration').value);
+
+  const teamMembers = document.querySelectorAll('.team-member');
+  let totalLocalCost = 0;
+  let totalStep2DevCost = 0;
+  const breakdown = [];
+
+  teamMembers.forEach(member => {
+    const role = member.querySelector('.role-select').value;
+    const count = parseInt(member.querySelector('.quantity-input').value) || 1;
+    
+    const localMonthly = salaryData[role][location] * count;
+    const step2devMonthly = salaryData[role].step2dev * count;
+    
+    totalLocalCost += localMonthly * duration;
+    totalStep2DevCost += step2devMonthly * duration;
+
+    breakdown.push({
+      role: roleNames[role],
+      count: count,
+      localMonthly: salaryData[role][location],
+      step2devMonthly: salaryData[role].step2dev,
+      savingsMonthly: (salaryData[role][location] - salaryData[role].step2dev) * count
+    });
+  });
+
+  const totalSavings = totalLocalCost - totalStep2DevCost;
+  const savingsPercent = ((totalSavings / totalLocalCost) * 100).toFixed(0);
+
+  // Update UI
+  document.getElementById('localCost').textContent = `€${totalLocalCost.toLocaleString()}`;
+  document.getElementById('step2devCost').textContent = `€${totalStep2DevCost.toLocaleString()}`;
+  document.getElementById('totalSavings').textContent = `€${totalSavings.toLocaleString()}`;
+  document.getElementById('savingsPercent').textContent = `${savingsPercent}% cost reduction`;
+
+  // Update CTA
+  document.getElementById('ctaTitle').textContent = 
+    `Ready to Save €${totalSavings.toLocaleString()}+ Over ${duration} Months?`;
+
+  // Update breakdown table
+  const tableBody = document.getElementById('teamBreakdown');
+  tableBody.innerHTML = breakdown.map(item => `
+    <tr>
+      <td>${item.role}</td>
+      <td>${item.count}×</td>
+      <td class="local-cost">€${item.localMonthly.toLocaleString()}</td>
+      <td class="step2dev-cost">€${item.step2devMonthly.toLocaleString()}</td>
+      <td><span class="savings-badge">€${item.savingsMonthly.toLocaleString()}/mo</span></td>
+    </tr>
+  `).join('');
+
+  updateChart(duration, totalLocalCost, totalStep2DevCost);
+}
+
+function updateChart(duration, totalLocal, totalStep2Dev) {
+  const ctx = document.getElementById('costChart').getContext('2d');
+  
+  const months = [];
+  const localCosts = [];
+  const step2devCosts = [];
+  const savings = [];
+
+  const monthlyLocal = totalLocal / duration;
+  const monthlyStep2Dev = totalStep2Dev / duration;
+
+  for (let i = 1; i <= Math.min(duration, 24); i++) {
+    months.push(`Month ${i}`);
+    localCosts.push(monthlyLocal * i);
+    step2devCosts.push(monthlyStep2Dev * i);
+    savings.push((monthlyLocal - monthlyStep2Dev) * i);
+  }
+
+  if (costChart) {
+    costChart.destroy();
+  }
+
+  costChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: months,
+      datasets: [
+        {
+          label: 'Local Hiring Cost',
+          data: localCosts,
+          borderColor: '#ef4444',
+          backgroundColor: 'rgba(239, 68, 68, 0.1)',
+          tension: 0.4,
+          fill: true,
+          borderWidth: 3
+        },
+        {
+          label: 'Step2Dev Cost',
+          data: step2devCosts,
+          borderColor: '#4ade80',
+          backgroundColor: 'rgba(74, 222, 128, 0.1)',
+          tension: 0.4,
+          fill: true,
+          borderWidth: 3
+        },
+        {
+          label: 'Your Cumulative Savings',
+          data: savings,
+          borderColor: '#F97316',
+          backgroundColor: 'rgba(249, 115, 22, 0.1)',
+          tension: 0.4,
+          fill: true,
+          borderDash: [5, 5],
+          borderWidth: 3
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: true,
+      aspectRatio: 2.2,
+      plugins: {
+        legend: {
+          labels: {
+            color: 'rgba(255,255,255,0.8)',
+            font: {
+              size: 12,
+              weight: '600'
+            },
+            padding: 15,
+            usePointStyle: true
+          }
+        },
+        tooltip: {
+          backgroundColor: 'rgba(10, 24, 80, 0.95)',
+          titleColor: '#fff',
+          bodyColor: '#fff',
+          borderColor: 'rgba(249, 115, 22, 0.5)',
+          borderWidth: 1,
+          padding: 12,
+          displayColors: true,
+          callbacks: {
+            label: function(context) {
+              return context.dataset.label + ': €' + context.parsed.y.toLocaleString();
+            }
+          }
+        }
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          grid: {
+            color: 'rgba(255,255,255,0.05)'
+          },
+          ticks: {
+            color: 'rgba(255,255,255,0.6)',
+            callback: function(value) {
+              return '€' + (value/1000).toFixed(0) + 'k';
+            }
+          }
+        },
+        x: {
+          grid: {
+            color: 'rgba(255,255,255,0.05)'
+          },
+          ticks: {
+            color: 'rgba(255,255,255,0.6)',
+            maxRotation: 45,
+            minRotation: 0
+          }
+        }
+      }
+    }
+  });
+}
+
+// Event listeners
+document.getElementById('location').addEventListener('change', calculate);
+document.getElementById('duration').addEventListener('input', function() {
+  document.getElementById('durationValue').textContent = this.value + ' months';
+  calculate();
+});
+
+// Listen for changes in team builder
+document.getElementById('teamMembers').addEventListener('change', calculate);
+document.getElementById('teamMembers').addEventListener('input', calculate);
+
+// Initial calculation
+calculate();
+updateRemoveButtons();
+</script>
+
+</body>
+</html>  
