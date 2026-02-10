@@ -718,81 +718,85 @@ footer{background:var(--blue-dark);padding:3.5rem 5vw}
       </div>
     </div>
 
-    <!-- FORM (CONNECTED TO FORMSPREE) -->
-    <form
-      action="https://formspree.io/f/xojnvojb"
-      method="POST"
-      class="contact-form reveal"
-    >
-      <div class="form-row">
-        <div class="fg">
-          <label>Full Name *</label>
-          <input
-            type="text"
-            name="fullName"
-            placeholder="Jean Dupont"
-            required
-          />
+    <!-- CONTACT -->
+<section id="contact">
+  <div class="hero-grid"></div>
+  <div class="contact-inner">
+
+    <div class="cl reveal">
+      <div class="s-label" style="color:#fdba74">Book a Pilot</div>
+      <h2>Your First Engineer.<br/>This Week.<br/><span>Guaranteed.</span></h2>
+      <p>
+        Fill in the form and we'll respond within 4 business hours with a perfectly
+        matched engineer profile. No commitment. No risk. Just results.
+      </p>
+    </div>
+
+    <!-- FORM -->
+    <div class="contact-form reveal">
+
+      <form action="https://formsubmit.co/YOUREMAIL@gmail.com" method="POST">
+
+        <!-- REQUIRED HIDDEN SETTINGS -->
+        <input type="hidden" name="_subject" value="🚀 New Pilot Engineer Request">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_autoresponse"
+          value="Thanks for contacting Step2Dev! 🚀
+We’ve received your request and will get back to you within 4 business hours.
+— Step2Dev Team">
+        <input type="hidden" name="_next" value="https://yourdomain.com/thanks.html">
+        <input type="hidden" name="_captcha" value="false">
+
+        <div class="form-row">
+          <div class="fg">
+            <label>Full Name *</label>
+            <input type="text" name="Full Name" placeholder="Jean Dupont" required />
+          </div>
+
+          <div class="fg">
+            <label>Work Email *</label>
+            <input type="email" name="Email" placeholder="jean@startup.fr" required />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="fg">
+            <label>Company Name</label>
+            <input type="text" name="Company" placeholder="Startup SAS" />
+          </div>
+
+          <div class="fg">
+            <label>Engineer Level Needed</label>
+            <select name="Engineer Level">
+              <option value="">Select level</option>
+              <option>Fresher / Junior — €650/mo</option>
+              <option>Mid-Level — €1,100/mo</option>
+              <option>Senior — €1,700/mo</option>
+              <option>Multiple Engineers</option>
+              <option>Not Sure — Let's Discuss</option>
+            </select>
+          </div>
         </div>
 
         <div class="fg">
-          <label>Work Email *</label>
-          <input
-            type="email"
-            name="email"
-            placeholder="jean@startup.fr"
-            required
-          />
-        </div>
-      </div>
-
-      <div class="form-row">
-        <div class="fg">
-          <label>Company Name</label>
-          <input
-            type="text"
-            name="company"
-            placeholder="Startup SAS"
-          />
+          <label>Your Project &amp; Tech Stack</label>
+          <textarea
+            name="Project Details"
+            rows="3"
+            placeholder="e.g. We're building a SaaS on AWS using React + Node.js..."
+          ></textarea>
         </div>
 
-        <div class="fg">
-          <label>Engineer Level Needed</label>
-          <select name="engineerLevel">
-            <option value="">Select level</option>
-            <option>Fresher / Junior — €650/mo</option>
-            <option>Mid-Level — €1,100/mo</option>
-            <option>Senior — €1,700/mo</option>
-            <option>Multiple Engineers</option>
-            <option>Not Sure — Let's Discuss</option>
-          </select>
+        <button type="submit" class="form-submit">
+          🚀 Book My Pilot Engineer &amp; Start Saving Today
+        </button>
+
+        <div class="form-note">
+          🔒 100% confidential. We reply within 4 business hours.
         </div>
-      </div>
 
-      <div class="fg">
-        <label>Your Project &amp; Tech Stack</label>
-        <textarea
-          name="message"
-          rows="3"
-          placeholder="e.g. We're building a SaaS on AWS using React + Node.js. Need a DevOps engineer to handle our CI/CD pipeline..."
-        ></textarea>
-      </div>
-
-      <!-- Optional subject -->
-      <input
-        type="hidden"
-        name="_subject"
-        value="🚀 New Pilot Engineer Request"
-      />
-
-      <button type="submit" class="form-submit">
-        🚀 Book My Pilot Engineer &amp; Start Saving Today
-      </button>
-
-      <div class="form-note">
-        🔒 100% confidential. We reply within 4 business hours.
-      </div>
-    </form>
+      </form>
+    </div>
   </div>
 </section>
 
