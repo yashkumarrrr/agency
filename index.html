@@ -198,6 +198,194 @@ tbody td{padding:12px 18px;vertical-align:middle}
 .ben-t{font-family:'Syne',sans-serif;font-weight:700;font-size:.92rem;margin-bottom:3px}
 .ben-d{font-size:.8rem;line-height:1.6;color:var(--gray-600)}
 
+<!-- ══════════════════════ ROI CALCULATOR ══════════════════════ -->
+<section id="roi">
+  <div class="roi-inner">
+    <div class="reveal" style="text-align:center;max-width:680px;margin:0 auto 3rem">
+      <div class="s-label">ROI Calculator</div>
+      <h2 class="s-title">See Your <em>Exact Savings</em><br/>in Under 60 Seconds</h2>
+      <p class="s-desc" style="margin:0 auto">Pick your engineer level, team size, and project duration — watch your savings update in real time. Open the full calculator for charts and team breakdowns.</p>
+    </div>
+    <div class="roi-card reveal">
+      <div class="roi-bg-grid"></div>
+      <div class="roi-blob1"></div><div class="roi-blob2"></div>
+      <!-- LEFT -->
+      <div class="roi-left">
+        <div class="s-label">Step2Dev ROI Tool</div>
+        <div class="roi-title">Your team.<br/>Your budget.<br/><em>Your savings.</em></div>
+        <p class="roi-desc">The full calculator lets you build a custom multi-role team, pick any of 5 countries, set your exact timeline, and see month-by-month cost charts — all in one place.</p>
+        <a href="roi-calculator.html" target="_blank" class="roi-open-btn">
+          Open Full ROI Calculator
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+      <!-- RIGHT: live mini calc -->
+      <div class="roi-right">
+        <div class="roi-calc">
+          <div class="roi-calc-head">⚡ Live Quick Calculator</div>
+          <div class="roi-eng-btns">
+            <button class="roi-eng-btn active" onclick="setRoiLevel('senior',this)">Senior</button>
+            <button class="roi-eng-btn" onclick="setRoiLevel('mid',this)">Mid-Level</button>
+            <button class="roi-eng-btn" onclick="setRoiLevel('fresher',this)">Fresher</button>
+          </div>
+          <div class="roi-slider-group">
+            <div class="roi-slider-top">
+              <span>Team Size</span>
+              <strong id="roiTeamLbl">1 engineer</strong>
+            </div>
+            <input type="range" min="1" max="10" value="1" class="roi-range" id="roiTeamSlider" oninput="updateRoi()">
+          </div>
+          <div class="roi-slider-group">
+            <div class="roi-slider-top">
+              <span>Duration</span>
+              <strong id="roiDurLbl">12 months</strong>
+            </div>
+            <input type="range" min="1" max="24" value="12" class="roi-range" id="roiDurSlider" oninput="updateRoi()">
+          </div>
+          <div class="roi-results">
+            <div class="roi-res"><div class="roi-res-lbl">Local Cost</div><div class="roi-res-val red" id="roiFranceVal">€78,000</div></div>
+            <div class="roi-res"><div class="roi-res-lbl">Step2Dev</div><div class="roi-res-val grn" id="roiUsVal">€20,400</div></div>
+            <div class="roi-res"><div class="roi-res-lbl">You Save</div><div class="roi-res-val org" id="roiSaveVal">€57,600</div></div>
+          </div>
+          <a href="roi-calculator.html" target="_blank" class="roi-cta-mini">📊 Full Calculator with Charts & Team Builder →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ WHY NOT HIRE DIRECTLY ══════════════════════ -->
+<section id="direct">
+  <div class="direct-top reveal">
+    <div class="s-label">The Honest Truth</div>
+    <h2 class="s-title">"Can't I Just <em>Hire Indians</em><br/>Directly on LinkedIn?"</h2>
+    <p class="s-desc">We get this question every week. The answer: yes, you can try. Here's what actually happens — and why most companies end up calling us after 3 painful months.</p>
+  </div>
+
+  <div class="myths-grid">
+    <div class="myth-card reveal" onclick="toggleMyth(this)">
+      <div class="myth-head">
+        <div class="myth-emoji">⏱️</div>
+        <div class="myth-head-text"><div class="myth-tag">Time Reality</div><div class="myth-q">"I'll find someone great on LinkedIn in a week"</div></div>
+        <button class="myth-chev"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+      </div>
+      <div class="myth-body"><div class="myth-inner">
+        <div class="myth-answer">Sourcing alone takes 3–6 weeks. Then: screen 50+ profiles, schedule cross-timezone calls (India is UTC+5:30 — 4.5h ahead of France), run technical interviews, negotiate, wait for 1–3 month notice periods, and onboard from scratch. Real average: 3–5 months before your first line of code.</div>
+        <div class="myth-vs">
+          <div class="myth-box bad"><strong>❌ Hiring Direct</strong>3–5 months of recruiting before a single day of output.</div>
+          <div class="myth-box good"><strong>✅ Step2Dev</strong>48 hours from your call to your engineer's first commit.</div>
+        </div>
+      </div></div>
+    </div>
+
+    <div class="myth-card reveal" onclick="toggleMyth(this)">
+      <div class="myth-head">
+        <div class="myth-emoji">⚖️</div>
+        <div class="myth-head-text"><div class="myth-tag">Legal Reality</div><div class="myth-q">"I'll pay them as a freelancer — easy"</div></div>
+        <button class="myth-chev"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+      </div>
+      <div class="myth-body"><div class="myth-inner">
+        <div class="myth-answer">Paying an Indian freelancer from a French company is a legal minefield: Indian TDS deduction obligations, FEMA compliance for outward remittances, GDPR data-processor agreements, risk of disguised-employment classification (severe French penalties), wire fees of €25–60 per transfer, and 3–8% EUR/INR currency exposure.</div>
+        <div class="myth-vs">
+          <div class="myth-box bad"><strong>❌ Hiring Direct</strong>Tax exposure, FEMA, GDPR liability, currency risk — all entirely your problem.</div>
+          <div class="myth-box good"><strong>✅ Step2Dev</strong>One clean € invoice. All Indian tax, compliance, and FX handled by us.</div>
+        </div>
+      </div></div>
+    </div>
+
+    <div class="myth-card reveal" onclick="toggleMyth(this)">
+      <div class="myth-head">
+        <div class="myth-emoji">🎯</div>
+        <div class="myth-head-text"><div class="myth-tag">Quality Reality</div><div class="myth-q">"The LinkedIn profile looks great — they must be good"</div></div>
+        <button class="myth-chev"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+      </div>
+      <div class="myth-body"><div class="myth-inner">
+        <div class="myth-answer">India produces 1.5 million engineering graduates per year. Quality varies enormously. Without multi-stage technical assessment, system-design interviews, code reviews, and communication tests — you're gambling. 60–70% of unscreened direct hires don't meet expectations within the first 3 months, creating expensive re-hiring cycles.</div>
+        <div class="myth-vs">
+          <div class="myth-box bad"><strong>❌ Hiring Direct</strong>No filter for the top 5% without spending weeks on screening you're not set up to run.</div>
+          <div class="myth-box good"><strong>✅ Step2Dev</strong>Only the top 5% make it through our 4-stage technical + communication screen.</div>
+        </div>
+      </div></div>
+    </div>
+
+    <div class="myth-card reveal" onclick="toggleMyth(this)">
+      <div class="myth-head">
+        <div class="myth-emoji">💬</div>
+        <div class="myth-head-text"><div class="myth-tag">Management Reality</div><div class="myth-q">"We'll use Slack — timezone won't be a problem"</div></div>
+        <button class="myth-chev"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+      </div>
+      <div class="myth-body"><div class="myth-inner">
+        <div class="myth-answer">Without structured weekly reporting, sprint reviews, and an accountable middle layer — engineers go silent, deadlines slip, and you have zero escalation path. Managing a remote contractor from a different continent becomes a part-time job. Most CTOs report spending 15–25 hours/month just managing the relationship.</div>
+        <div class="myth-vs">
+          <div class="myth-box bad"><strong>❌ Hiring Direct</strong>You become the HR manager, scrum master, and reviewer — in a different timezone.</div>
+          <div class="myth-box good"><strong>✅ Step2Dev</strong>Weekly reports, Slack access, video calls, and a dedicated account manager. We manage everything.</div>
+        </div>
+      </div></div>
+    </div>
+
+    <div class="myth-card reveal" onclick="toggleMyth(this)">
+      <div class="myth-head">
+        <div class="myth-emoji">🔐</div>
+        <div class="myth-head-text"><div class="myth-tag">IP Reality</div><div class="myth-q">"A quick NDA will protect our code"</div></div>
+        <button class="myth-chev"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+      </div>
+      <div class="myth-body"><div class="myth-inner">
+        <div class="myth-answer">A simple NDA between a French company and an Indian individual has limited cross-jurisdictional enforceability. Indian and French IP law differ significantly. Without explicit work-for-hire clauses, GDPR data-processing agreements, and jurisdiction-specific assignments — your IP is exposed if a dispute arises.</div>
+        <div class="myth-vs">
+          <div class="myth-box bad"><strong>❌ Hiring Direct</strong>Cross-border NDA enforcement is expensive, uncertain, and most freelancers won't sign proper IP clauses.</div>
+          <div class="myth-box good"><strong>✅ Step2Dev</strong>Full IP assignment, GDPR DPA, and dual-jurisdiction contracts signed on every engagement.</div>
+        </div>
+      </div></div>
+    </div>
+
+    <div class="myth-card reveal" onclick="toggleMyth(this)">
+      <div class="myth-head">
+        <div class="myth-emoji">🔄</div>
+        <div class="myth-head-text"><div class="myth-tag">Retention Reality</div><div class="myth-q">"Once hired, they'll stay loyal for years"</div></div>
+        <button class="myth-chev"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+      </div>
+      <div class="myth-body"><div class="myth-inner">
+        <div class="myth-answer">India's tech market is one of the world's most competitive. Top engineers receive 3–5 offers per month. Direct remote hires with no local HR, no growth path, and no community leave within 8–14 months on average — leaving you back at square one after investing months in onboarding and losing all institutional knowledge.</div>
+        <div class="myth-vs">
+          <div class="myth-box bad"><strong>❌ Hiring Direct</strong>Average tenure: 8–14 months. Every departure = re-hiring cost + lost project knowledge.</div>
+          <div class="myth-box good"><strong>✅ Step2Dev</strong>15-day replacement guarantee. Engineer leaves? We replace them at zero cost. Your project never stops.</div>
+        </div>
+      </div></div>
+    </div>
+  </div>
+
+  <!-- Side-by-side comparison table -->
+  <div class="reveal">
+    <h3 style="font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;text-align:center;margin-bottom:1.5rem">Step2Dev vs. Hiring Directly — Side by Side</h3>
+    <div class="compare-wrap">
+      <table class="compare-tbl">
+        <thead><tr><th>Factor</th><th>❌ Hiring Directly (DIY)</th><th>✅ Step2Dev</th></tr></thead>
+        <tbody>
+          <tr><td class="feat">Time to First Engineer</td><td><div class="cell-bad">3–5 months</div></td><td><div class="cell-good">48 hours</div></td></tr>
+          <tr><td class="feat">Legal &amp; Tax Compliance</td><td><div class="cell-bad">Your problem (complex)</div></td><td><div class="cell-good">Fully handled by us</div></td></tr>
+          <tr><td class="feat">GDPR &amp; IP Protection</td><td><div class="cell-bad">Uncertain across borders</div></td><td><div class="cell-good">Full agreements, Day 1</div></td></tr>
+          <tr><td class="feat">Engineer Quality Vetting</td><td><div class="cell-bad">You do it (weeks of work)</div></td><td><div class="cell-good">Pre-screened top 5%</div></td></tr>
+          <tr><td class="feat">Weekly Reporting</td><td><div class="cell-bad">No structure — you manage</div></td><td><div class="cell-good">Built-in every week</div></td></tr>
+          <tr><td class="feat">Payroll &amp; HR</td><td><div class="cell-bad">Your responsibility</div></td><td><div class="cell-good">Zero work on your side</div></td></tr>
+          <tr><td class="feat">Replacement Guarantee</td><td><div class="cell-bad">None — start over</div></td><td><div class="cell-good">15-day replacement, free</div></td></tr>
+          <tr><td class="feat">Wire Transfer Fees</td><td><div class="cell-bad">€25–60 per transfer</div></td><td><div class="cell-good">One clean € invoice</div></td></tr>
+          <tr><td class="feat">Currency Risk</td><td><div class="cell-bad">3–8% EUR/INR volatility</div></td><td><div class="cell-good">Fixed € price always</div></td></tr>
+          <tr><td class="feat">Your Monthly Time Cost</td><td><div class="cell-bad">20–40 hours managing</div></td><td><div class="cell-good">Zero — we handle all</div></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="direct-cta reveal">
+    <div class="dct-text">
+      <h3>Still Thinking of Going Direct? Let's Talk First.</h3>
+      <p>Book a free 30-min call with Yash or Naman. We'll honestly show you if DIY makes sense for your situation — or where it'll cost you more than you think.</p>
+    </div>
+    <a href="#contact" class="dct-btn">📅 Book Free Strategy Call →</a>
+  </div>
+</section>
+
+
 /* CONTACT */
 #contact{background:linear-gradient(140deg,#060f35 0%,#0d2060 50%,#1E3A8A 100%);position:relative;overflow:hidden}
 #contact .hero-grid{opacity:.4}
