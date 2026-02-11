@@ -6,18 +6,10 @@
 <title>Step2Dev — Elite Indian Engineers for French & European Startups</title>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
 <style>
-:root {
-  --blue:#1E3A8A; --blue-dark:#0a1850; --blue-mid:#163070; --blue-light:#2d5be3;
-  --orange:#F97316; --orange-light:#fb923c; --orange-pale:#fff7ed;
-  --white:#fff; --gray-50:#f8fafc; --gray-100:#f1f5f9;
-  --gray-200:#e2e8f0; --gray-400:#94a3b8; --gray-600:#475569;
-  --gray-800:#1e293b; --text:#0f172a;
-  --green:#16a34a; --green-bg:#f0fdf4;
-}
+:root{--blue:#1E3A8A;--blue-dark:#0a1850;--blue-mid:#163070;--blue-light:#2d5be3;--orange:#F97316;--orange-light:#fb923c;--orange-pale:#fff7ed;--white:#fff;--gray-50:#f8fafc;--gray-100:#f1f5f9;--gray-200:#e2e8f0;--gray-400:#94a3b8;--gray-600:#475569;--gray-800:#1e293b;--text:#0f172a;--green:#16a34a;--green-bg:#f0fdf4}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{font-family:'DM Sans',sans-serif;color:var(--text);background:var(--white);overflow-x:hidden}
-
 .scroll-line{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--orange),var(--blue));width:0%;z-index:300;transition:width .1s}
 
 /* NAV */
@@ -25,8 +17,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 nav.scrolled{box-shadow:0 2px 28px rgba(30,58,138,0.1)}
 .nav-logo{font-family:'Syne',sans-serif;font-size:1.45rem;font-weight:800;color:var(--blue);letter-spacing:-0.5px;text-decoration:none}
 .nav-logo span{color:var(--orange)}
-.nav-links{display:flex;gap:2rem;list-style:none}
-.nav-links a{font-size:0.85rem;font-weight:500;color:var(--gray-600);text-decoration:none;transition:color .2s}
+.nav-links{display:flex;gap:1.5rem;list-style:none}
+.nav-links a{font-size:0.82rem;font-weight:500;color:var(--gray-600);text-decoration:none;transition:color .2s}
 .nav-links a:hover{color:var(--blue)}
 .nav-cta{background:var(--orange);color:#fff;border:none;border-radius:8px;padding:.55rem 1.4rem;font-size:.85rem;font-weight:700;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;text-decoration:none;white-space:nowrap;box-shadow:0 2px 12px rgba(249,115,22,.3)}
 .nav-cta:hover{background:var(--orange-light);transform:translateY(-1px);box-shadow:0 4px 18px rgba(249,115,22,.4)}
@@ -41,7 +33,6 @@ nav.scrolled{box-shadow:0 2px 28px rgba(30,58,138,0.1)}
 .b2{width:380px;height:380px;background:rgba(45,91,227,.4);bottom:-100px;left:5%;animation:bf 12s ease-in-out infinite reverse}
 .b3{width:240px;height:240px;background:rgba(249,115,22,.1);top:45%;right:32%;animation:bf 7s ease-in-out infinite 1.5s}
 @keyframes bf{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-28px) scale(1.06)}}
-
 .hero-content{position:relative;z-index:2;max-width:660px}
 .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(249,115,22,.12);border:1px solid rgba(249,115,22,.38);border-radius:50px;padding:6px 16px;color:#fdba74;font-size:.78rem;font-weight:600;margin-bottom:1.5rem;animation:fu .7s ease both;letter-spacing:.02em}
 .hero-badge::before{content:'';width:7px;height:7px;background:var(--orange);border-radius:50%;animation:pulse 1.6s ease-in-out infinite;flex-shrink:0}
@@ -57,6 +48,12 @@ nav.scrolled{box-shadow:0 2px 28px rgba(30,58,138,0.1)}
 .btn-primary:hover::after{transform:translateX(100%)}
 .btn-ghost{background:rgba(255,255,255,.08);color:#fff;font-weight:600;font-size:1rem;padding:.9rem 2rem;border-radius:10px;text-decoration:none;border:1px solid rgba(255,255,255,.22);font-family:'DM Sans',sans-serif;transition:all .2s}
 .btn-ghost:hover{background:rgba(255,255,255,.16);transform:translateY(-2px)}
+/* ROI button in hero */
+.btn-roi{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,rgba(249,115,22,.2),rgba(249,115,22,.1));color:#fdba74;font-weight:700;font-size:.95rem;padding:.85rem 1.75rem;border-radius:10px;text-decoration:none;border:1px solid rgba(249,115,22,.4);font-family:'DM Sans',sans-serif;transition:all .25s;position:relative;overflow:hidden}
+.btn-roi::after{content:'';position:absolute;inset:0;background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.15) 50%,transparent 70%);transform:translateX(-100%);transition:transform .5s}
+.btn-roi:hover{background:linear-gradient(135deg,rgba(249,115,22,.35),rgba(249,115,22,.2));color:#fff;transform:translateY(-2px);box-shadow:0 8px 24px rgba(249,115,22,.3)}
+.btn-roi:hover::after{transform:translateX(100%)}
+.btn-roi-icon{width:20px;height:20px;background:var(--orange);border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:.75rem;flex-shrink:0}
 .hero-stats{display:flex;gap:2.5rem;flex-wrap:wrap;margin-top:3rem;animation:fu .7s ease .6s both}
 .hs-num{font-family:'Syne',sans-serif;font-size:2.2rem;font-weight:800;color:var(--orange);line-height:1}
 .hs-label{font-size:.78rem;color:rgba(255,255,255,.55);margin-top:4px}
@@ -73,8 +70,7 @@ nav.scrolled{box-shadow:0 2px 28px rgba(30,58,138,0.1)}
 .hcard-mini{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:12px}
 .mini-label{font-size:.68rem;color:rgba(255,255,255,.4)}
 .mini-val{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:800;margin-top:3px}
-.mini-val.g{color:#4ade80}
-.mini-val.o{color:var(--orange)}
+.mini-val.g{color:#4ade80}.mini-val.o{color:var(--orange)}
 @keyframes fu{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
 
 /* SECTION BASE */
@@ -88,7 +84,7 @@ section{padding:100px 5vw}
 .reveal{opacity:0;transform:translateY(38px);transition:opacity .7s ease,transform .7s ease}
 .reveal.visible{opacity:1;transform:none}
 
-/* HOW WE HELP */
+/* HOW */
 #how{background:var(--gray-50)}
 .steps-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.75rem}
 .step-card{background:var(--white);border:1px solid var(--gray-200);border-radius:22px;padding:2.2rem;position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s,border-color .3s}
@@ -101,7 +97,7 @@ section{padding:100px 5vw}
 .step-t{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:800;margin-bottom:.6rem}
 .step-d{font-size:.9rem;line-height:1.68;color:var(--gray-600)}
 
-/* ABOUT US */
+/* ABOUT */
 #about{background:var(--white)}
 .about-inner{display:grid;grid-template-columns:1fr 1.15fr;gap:5rem;align-items:center}
 @media(max-width:860px){.about-inner{grid-template-columns:1fr}}
@@ -130,7 +126,7 @@ section{padding:100px 5vw}
 .pill{background:var(--gray-100);color:var(--gray-800);font-size:.7rem;font-weight:500;border-radius:20px;padding:4px 10px;border:1px solid var(--gray-200)}
 .fc-quote{font-size:.82rem;line-height:1.65;color:var(--gray-600);font-style:italic;border-left:3px solid var(--orange);padding-left:.9rem;text-align:left}
 
-/* WHY CHOOSE US */
+/* WHY */
 #why{background:linear-gradient(160deg,#060f35 0%,#0d2060 50%,#1E3A8A 100%);position:relative;overflow:hidden}
 #why .hero-grid{opacity:.4}
 .why-inner{position:relative;z-index:2}
@@ -165,15 +161,14 @@ section{padding:100px 5vw}
 .tc-rate{font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:800;color:var(--blue)}
 .tc-rate span{font-size:.8rem;font-weight:400;color:var(--gray-400)}
 
-/* COST COMPARISON */
+/* COST */
 #savings{background:var(--white)}
 .savings-top{text-align:center;margin-bottom:3.5rem}
 .savings-top .s-desc{margin:0 auto}
 .cost-tabs{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:2.5rem}
 .cost-tab{padding:.55rem 1.4rem;border-radius:50px;font-size:.82rem;font-weight:600;cursor:pointer;border:2px solid var(--gray-200);background:var(--white);color:var(--gray-600);transition:all .2s;font-family:'DM Sans',sans-serif}
 .cost-tab.active{background:var(--blue);border-color:var(--blue);color:#fff;box-shadow:0 4px 14px rgba(30,58,138,.25)}
-.cost-panel{display:none}
-.cost-panel.active{display:block}
+.cost-panel{display:none}.cost-panel.active{display:block}
 .table-wrap{overflow-x:auto;border-radius:16px;box-shadow:0 4px 24px rgba(30,58,138,.08);border:1px solid var(--gray-200)}
 table{width:100%;border-collapse:collapse;font-size:.875rem}
 thead tr{background:var(--blue)}
@@ -188,8 +183,6 @@ tbody td{padding:12px 18px;vertical-align:middle}
 .spct{background:var(--green-bg);color:var(--green);font-weight:700;border-radius:20px;padding:3px 9px;font-size:.75rem;white-space:nowrap}
 .spct.best{background:#fff7ed;color:var(--orange)}
 .flag-cell{display:flex;align-items:center;gap:8px}
-
-/* BENEFITS STRIP */
 .benefits-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem;margin-top:4rem}
 .ben-card{display:flex;gap:1rem;align-items:flex-start;padding:1.4rem;background:var(--white);border:1px solid var(--gray-200);border-radius:18px;transition:transform .3s,box-shadow .3s,border-color .3s}
 .ben-card:hover{transform:translateX(5px);box-shadow:0 8px 28px rgba(30,58,138,.09);border-color:rgba(30,58,138,.2)}
@@ -197,6 +190,398 @@ tbody td{padding:12px 18px;vertical-align:middle}
 .ben-icon svg{width:20px;height:20px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .ben-t{font-family:'Syne',sans-serif;font-weight:700;font-size:.92rem;margin-bottom:3px}
 .ben-d{font-size:.8rem;line-height:1.6;color:var(--gray-600)}
+
+/* ══ ROI SECTION ══ */
+#roi{background:var(--gray-50);overflow:hidden;position:relative}
+.roi-inner{position:relative;z-index:2}
+.roi-card{background:linear-gradient(140deg,#060f35,#0d2060 55%,#1E3A8A);border-radius:28px;overflow:hidden;position:relative;display:grid;grid-template-columns:1fr 1.1fr;gap:0;min-height:480px}
+@media(max-width:860px){.roi-card{grid-template-columns:1fr}}
+.roi-bg-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:60px 60px;pointer-events:none}
+.roi-blob1{position:absolute;width:400px;height:400px;border-radius:50%;background:rgba(249,115,22,.12);filter:blur(80px);top:-100px;right:-60px;animation:bf 10s ease-in-out infinite;pointer-events:none}
+.roi-blob2{position:absolute;width:260px;height:260px;border-radius:50%;background:rgba(45,91,227,.25);filter:blur(70px);bottom:-60px;left:5%;animation:bf 13s ease-in-out infinite reverse;pointer-events:none}
+.roi-left{padding:3.5rem;position:relative;z-index:2;display:flex;flex-direction:column;justify-content:center}
+.roi-left .s-label{color:#fdba74}
+.roi-left .s-label::before{background:#fdba74}
+.roi-title{font-family:'Syne',sans-serif;font-size:clamp(1.8rem,3vw,2.6rem);font-weight:800;color:#fff;line-height:1.12;margin-bottom:1rem}
+.roi-title em{font-style:normal;color:var(--orange)}
+.roi-desc{color:rgba(255,255,255,.68);font-size:.96rem;line-height:1.75;margin-bottom:2rem}
+.roi-open-btn{display:inline-flex;align-items:center;gap:10px;background:var(--orange);color:#fff;font-weight:700;font-size:1rem;padding:1rem 2rem;border-radius:12px;text-decoration:none;box-shadow:0 6px 24px rgba(249,115,22,.45);transition:transform .2s,box-shadow .2s;position:relative;overflow:hidden;width:fit-content}
+.roi-open-btn::after{content:'';position:absolute;inset:0;background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.25) 50%,transparent 70%);transform:translateX(-100%);transition:transform .5s}
+.roi-open-btn:hover{transform:translateY(-3px);box-shadow:0 10px 32px rgba(249,115,22,.55)}
+.roi-open-btn:hover::after{transform:translateX(100%)}
+.roi-open-btn svg{width:16px;height:16px;fill:none;stroke:#fff;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s}
+.roi-open-btn:hover svg{transform:translateX(3px)}
+.roi-right{padding:2.5rem;position:relative;z-index:2;display:flex;align-items:center}
+/* Mini calculator */
+.roi-calc{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.13);border-radius:20px;padding:2rem;backdrop-filter:blur(12px);width:100%}
+.roi-calc-head{font-size:.72rem;font-weight:700;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.1em;margin-bottom:1.25rem}
+.roi-eng-btns{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:1.25rem}
+.roi-eng-btn{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.55);border-radius:20px;padding:5px 12px;font-size:.75rem;font-weight:600;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif}
+.roi-eng-btn.active{background:var(--orange);border-color:var(--orange);color:#fff;box-shadow:0 3px 10px rgba(249,115,22,.3)}
+.roi-slider-group{margin-bottom:1.1rem}
+.roi-slider-top{display:flex;justify-content:space-between;margin-bottom:.45rem;font-size:.82rem}
+.roi-slider-top span{color:rgba(255,255,255,.55)}
+.roi-slider-top strong{color:var(--orange);font-family:'Syne',sans-serif;font-weight:800}
+.roi-range{width:100%;height:6px;border-radius:5px;background:rgba(255,255,255,.1);outline:none;-webkit-appearance:none;cursor:pointer}
+.roi-range::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;border-radius:50%;background:linear-gradient(135deg,var(--orange),#ea580c);cursor:pointer;box-shadow:0 3px 10px rgba(249,115,22,.5);transition:transform .15s}
+.roi-range::-webkit-slider-thumb:hover{transform:scale(1.3)}
+.roi-results{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:1.25rem 0 1rem}
+.roi-res{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:11px;text-align:center}
+.roi-res-lbl{font-size:.62rem;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.05em}
+.roi-res-val{font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:800;margin-top:4px}
+.roi-res-val.red{color:#f87171}
+.roi-res-val.grn{color:#4ade80}
+.roi-res-val.org{color:var(--orange);animation:roiPulse 2s ease-in-out infinite}
+@keyframes roiPulse{0%,100%{opacity:1}50%{opacity:.7}}
+.roi-cta-mini{display:block;width:100%;padding:.75rem;background:rgba(45,91,227,.2);border:1px solid rgba(45,91,227,.4);border-radius:10px;color:#93bbff;font-size:.82rem;font-weight:600;text-align:center;text-decoration:none;transition:all .2s;cursor:pointer}
+.roi-cta-mini:hover{background:rgba(45,91,227,.35);color:#fff}
+
+/* ══ WHY NOT HIRE DIRECTLY ══ */
+#direct{background:var(--white)}
+.direct-top{text-align:center;max-width:740px;margin:0 auto 3.5rem}
+.direct-top .s-desc{margin:0 auto}
+/* Myth cards accordion */
+.myths-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.25rem;margin-bottom:3.5rem}
+.myth-card{border-radius:20px;border:1.5px solid var(--gray-200);background:var(--white);transition:transform .3s,box-shadow .3s,border-color .3s;cursor:pointer;overflow:hidden}
+.myth-card:hover{transform:translateY(-4px);box-shadow:0 16px 44px rgba(30,58,138,.1);border-color:rgba(30,58,138,.18)}
+.myth-card.open{border-color:var(--orange);box-shadow:0 10px 36px rgba(249,115,22,.1)}
+.myth-head{display:flex;align-items:flex-start;gap:1rem;padding:1.4rem}
+.myth-emoji{width:46px;height:46px;border-radius:12px;background:linear-gradient(135deg,#fef3c7,#fde68a);display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;transition:background .3s}
+.myth-card.open .myth-emoji{background:linear-gradient(135deg,#fff7ed,#fed7aa)}
+.myth-head-text{flex:1}
+.myth-tag{font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:.2rem}
+.myth-q{font-family:'Syne',sans-serif;font-size:.97rem;font-weight:800;color:var(--text);line-height:1.3}
+.myth-chev{width:28px;height:28px;border-radius:50%;background:var(--gray-100);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .35s,background .3s;margin-top:2px}
+.myth-card.open .myth-chev{transform:rotate(180deg);background:var(--orange)}
+.myth-chev svg{width:13px;height:13px;fill:none;stroke:var(--gray-500);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;transition:stroke .3s}
+.myth-card.open .myth-chev svg{stroke:#fff}
+.myth-body{max-height:0;overflow:hidden;transition:max-height .45s cubic-bezier(.4,0,.2,1)}
+.myth-card.open .myth-body{max-height:600px}
+.myth-inner{padding:0 1.4rem 1.4rem}
+.myth-answer{font-size:.88rem;line-height:1.72;color:var(--gray-600);border-top:1px solid var(--gray-200);padding-top:1rem;margin-bottom:1rem}
+.myth-vs{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+@media(max-width:480px){.myth-vs{grid-template-columns:1fr}}
+.myth-box{border-radius:12px;padding:.9rem;font-size:.78rem;line-height:1.6}
+.myth-box.bad{background:#fef2f2;border:1px solid #fecaca;color:#991b1b}
+.myth-box.good{background:var(--green-bg);border:1px solid #bbf7d0;color:#166534}
+.myth-box strong{display:block;font-size:.68rem;text-transform:uppercase;letter-spacing:.07em;margin-bottom:.3rem;opacity:.7}
+/* Comparison table */
+.compare-wrap{border-radius:20px;overflow:hidden;box-shadow:0 8px 32px rgba(30,58,138,.1);border:1px solid var(--gray-200);overflow-x:auto}
+.compare-tbl{width:100%;border-collapse:collapse;font-size:.875rem;min-width:560px}
+.compare-tbl thead tr{background:var(--blue)}
+.compare-tbl thead th{color:#fff;padding:13px 18px;font-family:'Syne',sans-serif;font-weight:700;font-size:.78rem;letter-spacing:.04em;text-align:left}
+.compare-tbl tbody tr{border-bottom:1px solid var(--gray-200);transition:background .15s}
+.compare-tbl tbody tr:nth-child(even){background:var(--gray-50)}
+.compare-tbl tbody tr:hover{background:rgba(30,58,138,.03)}
+.compare-tbl td{padding:11px 18px;vertical-align:middle}
+.compare-tbl .feat{font-weight:600;font-size:.87rem}
+.cell-bad{color:#dc2626;font-size:.82rem;display:flex;align-items:center;gap:5px}
+.cell-bad::before{content:'✗';font-weight:800;flex-shrink:0}
+.cell-good{color:#16a34a;font-size:.82rem;display:flex;align-items:center;gap:5px;font-weight:600}
+.cell-good::before{content:'✓';font-weight:800;flex-shrink:0}
+/* Bottom CTA */
+.direct-cta{margin-top:3rem;background:linear-gradient(135deg,#fff7ed,#fef3c7);border:1.5px solid rgba(249,115,22,.22);border-radius:24px;padding:2.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem}
+.dct-text h3{font-family:'Syne',sans-serif;font-size:1.35rem;font-weight:800;margin-bottom:.4rem}
+.dct-text p{font-size:.9rem;color:var(--gray-600);max-width:460px;line-height:1.65}
+.dct-btn{background:var(--orange);color:#fff;font-weight:700;font-size:.92rem;padding:.9rem 1.9rem;border-radius:12px;text-decoration:none;white-space:nowrap;box-shadow:0 4px 18px rgba(249,115,22,.35);transition:all .2s;flex-shrink:0}
+.dct-btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(249,115,22,.45)}
+
+/* CONTACT */
+#contact{background:linear-gradient(140deg,#060f35 0%,#0d2060 50%,#1E3A8A 100%);position:relative;overflow:hidden}
+#contact .hero-grid{opacity:.4}
+.contact-inner{display:grid;grid-template-columns:1fr 1fr;gap:4rem;position:relative;z-index:2;align-items:center}
+@media(max-width:820px){.contact-inner{grid-template-columns:1fr}}
+.cl h2{font-family:'Syne',sans-serif;font-size:clamp(1.85rem,3.5vw,2.7rem);font-weight:800;color:#fff;margin-bottom:1rem;line-height:1.13}
+.cl h2 span{color:var(--orange)}
+.cl p{color:rgba(255,255,255,.68);font-size:.98rem;line-height:1.75;margin-bottom:2rem}
+.contact-extras{display:flex;flex-direction:column;gap:.8rem}
+.ce{display:flex;align-items:center;gap:10px;color:rgba(255,255,255,.75);font-size:.88rem}
+.ce svg{width:18px;height:18px;fill:none;stroke:var(--orange);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.contact-form{background:rgba(255,255,255,.065);border:1px solid rgba(255,255,255,.12);border-radius:26px;padding:2.5rem;backdrop-filter:blur(10px)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+@media(max-width:480px){.form-row{grid-template-columns:1fr}}
+.fg{display:flex;flex-direction:column;gap:6px;margin-bottom:1rem}
+.fg label{font-size:.78rem;font-weight:600;color:rgba(255,255,255,.65)}
+.fg input,.fg textarea,.fg select{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:10px;padding:.75rem 1rem;font-size:.9rem;color:#fff;font-family:'DM Sans',sans-serif;outline:none;resize:vertical;transition:border-color .2s,background .2s}
+.fg input::placeholder,.fg textarea::placeholder{color:rgba(255,255,255,.32)}
+.fg input:focus,.fg textarea:focus,.fg select:focus{border-color:var(--orange);background:rgba(255,255,255,.11)}
+.fg select option{background:#0d2060;color:#fff}
+.form-submit{width:100%;padding:1.05rem;background:var(--orange);color:#fff;border:none;border-radius:12px;font-size:1rem;font-weight:700;font-family:'DM Sans',sans-serif;cursor:pointer;box-shadow:0 4px 20px rgba(249,115,22,.4);transition:transform .2s,box-shadow .2s;letter-spacing:.01em}
+.form-submit:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(249,115,22,.5)}
+.form-note{text-align:center;font-size:.73rem;color:rgba(255,255,255,.38);margin-top:.75rem}
+
+/* FOOTER */
+footer{background:var(--blue-dark);padding:3.5rem 5vw}
+.footer-inner{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:2rem}
+.fb-logo{font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:800;color:#fff}
+.fb-logo span{color:var(--orange)}
+.fb-tagline{font-size:.8rem;color:rgba(255,255,255,.45);margin-top:5px;max-width:220px;line-height:1.6}
+.footer-links h4{font-family:'Syne',sans-serif;font-size:.82rem;font-weight:700;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.9rem}
+.footer-links ul{list-style:none;display:flex;flex-direction:column;gap:.5rem}
+.footer-links a{font-size:.85rem;color:rgba(255,255,255,.55);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--orange)}
+.footer-socials{display:flex;gap:10px;margin-top:1rem}
+.soc-btn{width:38px;height:38px;border:1px solid rgba(255,255,255,.13);border-radius:10px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.55);text-decoration:none;transition:all .2s}
+.soc-btn:hover{background:var(--orange);border-color:var(--orange);color:#fff}
+.soc-btn svg{width:16px;height:16px;fill:currentColor}
+.footer-bottom{margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.07);display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem;font-size:.75rem;color:rgba(255,255,255,.3)}
+
+/* WA FLOAT */
+.wa-float{position:fixed;bottom:28px;right:28px;z-index:999;width:58px;height:58px;border-radius:50%;background:#25d366;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 24px rgba(37,211,102,.5);text-decoration:none;animation:wafl 3s ease-in-out infinite}
+.wa-float:hover{transform:scale(1.12)!important;animation:none}
+.wa-float svg{width:30px;height:30px;fill:#fff}
+@keyframes wafl{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+
+/* RESPONSIVE */
+@media(max-width:720px){
+  .nav-links{display:none}
+  .nav-hamburger{display:flex}
+  section{padding:72px 5vw}
+  .about-values{grid-template-columns:1fr}
+  .founders-grid{grid-template-columns:1fr}
+  .direct-cta{flex-direction:column;text-align:center}
+}
+@media(max-width:480px){
+  .hero-h1{font-size:2rem}
+  .s-title{font-size:1.7rem}
+  .hero-actions{flex-direction:column}
+  .btn-primary,.btn-ghost,.btn-roi{text-align:center}
+  .hero-stats{gap:1.5rem}
+  .roi-results{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="scroll-line" id="scrollLine"></div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">Step<span>2Dev</span></a>
+  <ul class="nav-links">
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#about">About Us</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#team">Our Team</a></li>
+    <li><a href="#savings">Cost Savings</a></li>
+    <li><a href="#roi">ROI Calculator</a></li>
+    <li><a href="#direct">Why Not DIY?</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">🚀 Hire Engineers Now</a>
+  <button class="nav-hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid"></div>
+  <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+  <div class="hero-content">
+    <div class="hero-badge">🇮🇳 → 🇫🇷 &nbsp;India to France &amp; Europe &nbsp;•&nbsp; Now Onboarding Clients</div>
+    <h1 class="hero-h1">Stop Overpaying for<br/><em>World-Class Engineers.</em><span class="line2">We Deliver. You Grow.</span></h1>
+    <p class="hero-sub">Your French startup deserves elite DevOps and software engineers — without the €6,500/month price tag. We hire, manage, and report weekly so you focus on what matters: shipping your product.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">🚀 Book Your Pilot Engineer</a>
+      <a href="#savings" class="btn-ghost">See Full Cost Breakdown →</a>
+      <a href="roi-calculator.html" target="_blank" class="btn-roi"><span class="btn-roi-icon">📊</span>Calculate Your ROI</a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="hs-num">74%</div><div class="hs-label">Cost Saved vs France</div></div>
+      <div><div class="hs-num">48h</div><div class="hs-label">Time to First Engineer</div></div>
+      <div><div class="hs-num">100%</div><div class="hs-label">Fully Managed</div></div>
+      <div><div class="hs-num">0</div><div class="hs-label">HR Headaches</div></div>
+    </div>
+  </div>
+  <div class="hero-card">
+    <div class="hcard">
+      <div class="hcard-head"><span class="hcard-title">Monthly Savings — Senior</span><span class="live-badge">● LIVE</span></div>
+      <div class="hcard-big">€4,800 / mo</div>
+      <div class="hcard-sub">Saved vs hiring locally in France</div>
+    </div>
+    <div class="hcard">
+      <div class="hcard-row">
+        <div class="hcard-mini"><div class="mini-label">France Cost</div><div class="mini-val o">€6,500</div></div>
+        <div class="hcard-mini"><div class="mini-label">Step2Dev</div><div class="mini-val g">€1,700</div></div>
+        <div class="hcard-mini"><div class="mini-label">You Save</div><div class="mini-val g">74%</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW WE HELP -->
+<section id="how">
+  <div class="reveal" style="text-align:center;max-width:700px;margin:0 auto 3rem">
+    <div class="s-label">Our Process</div>
+    <h2 class="s-title">Zero to <em>Deployed Engineers</em><br/>in 3 Simple Steps</h2>
+    <p class="s-desc" style="margin:0 auto">No lengthy hiring pipelines. No HR overhead. Just elite engineers embedded in your team — fully managed, fully accountable.</p>
+  </div>
+  <div class="steps-grid">
+    <div class="step-card reveal">
+      <span class="step-n">01</span>
+      <div class="step-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+      <div class="step-t">We Source &amp; Hire Top Engineers</div>
+      <div class="step-d">We identify, vet, and onboard India's best DevOps and software engineers — matched to your tech stack and culture. Done in 48 hours.</div>
+    </div>
+    <div class="step-card reveal">
+      <span class="step-n">02</span>
+      <div class="step-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+      <div class="step-t">Engineers Execute &amp; Report Weekly</div>
+      <div class="step-d">Your dedicated engineer works full-time on your roadmap. Weekly video calls, Slack access, sprint reports, and full transparency — always.</div>
+    </div>
+    <div class="step-card reveal">
+      <span class="step-n">03</span>
+      <div class="step-icon"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+      <div class="step-t">You Get Results, Without the Hassle</div>
+      <div class="step-d">We handle payroll, contracts, compliance, and performance reviews. You stay focused on shipping. Scale up or down in 2 weeks, anytime.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT US -->
+<section id="about">
+  <div class="about-inner">
+    <div class="reveal">
+      <div class="s-label">About Us</div>
+      <h2 class="s-title">Built by Engineers,<br/><span class="blue">For CTOs Who Think Big</span></h2>
+      <p class="s-desc">Step2Dev was founded by Yash Kumar and Naman Kumar — two engineers who believed world-class technical talent shouldn't be gated behind geography or inflated local salaries. We bridge the gap between Europe's fastest-growing startups and India's finest engineers.</p>
+      <div class="about-values">
+        <div class="av-card"><div class="av-icon">🎯</div><div class="av-title">Mission-Driven</div><div class="av-text">We exist to make elite engineering accessible to every startup, regardless of budget.</div></div>
+        <div class="av-card"><div class="av-icon">🔒</div><div class="av-title">Trust First</div><div class="av-text">Signed NDAs, GDPR-compliant processes, and full IP protection on every engagement.</div></div>
+        <div class="av-card"><div class="av-icon">⚡</div><div class="av-title">Speed &amp; Quality</div><div class="av-text">48-hour onboarding. Engineers who hit the ground running from day one.</div></div>
+        <div class="av-card"><div class="av-icon">📈</div><div class="av-title">Elastic Scaling</div><div class="av-text">Grow from 1 to 10 engineers without a single job post or interview to conduct.</div></div>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="s-label">Meet the Founders</div>
+      <h2 class="s-title" style="margin-bottom:1.5rem">The Minds Behind<br/><em>Step2Dev</em></h2>
+      <div class="founders-grid">
+        <div class="founder-card">
+          <div class="fc-top yash"><span class="fc-founder-badge">Founder</span><div class="fc-avatar yash">YK</div></div>
+          <div class="fc-body">
+            <span class="fc-role-badge">Founder &amp; CEO</span>
+            <div class="fc-name">Yash Kumar</div>
+            <div class="fc-title">DevOps Engineer &amp; Cloud Architect</div>
+            <div class="fc-skills"><span class="pill">AWS</span><span class="pill">Kubernetes</span><span class="pill">Terraform</span><span class="pill">CI/CD</span><span class="pill">Docker</span></div>
+            <div class="fc-quote">"Great infrastructure should be invisible — it just works, at any scale."</div>
+          </div>
+        </div>
+        <div class="founder-card">
+          <div class="fc-top naman"><span class="fc-founder-badge">Co-Founder</span><div class="fc-avatar naman">NK</div></div>
+          <div class="fc-body">
+            <span class="fc-role-badge" style="background:rgba(45,91,227,.08);color:#2d5be3">Co-Founder &amp; CTO</span>
+            <div class="fc-name">Naman Kumar</div>
+            <div class="fc-title">Senior Software Engineer</div>
+            <div class="fc-skills"><span class="pill">React</span><span class="pill">Node.js</span><span class="pill">Python</span><span class="pill">PostgreSQL</span><span class="pill">System Design</span></div>
+            <div class="fc-quote">"Clean code, clear communication, consistent delivery — that's the Step2Dev standard."</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section id="why">
+  <div class="hero-grid"></div>
+  <div class="why-inner">
+    <div class="why-top reveal">
+      <div class="s-label">Why Step2Dev</div>
+      <h2 class="s-title">6 Reasons Smart CTOs<br/>Choose Us Over <em>Local Hiring</em></h2>
+      <p class="s-desc">We don't just supply engineers — we become an extension of your team, your standards, and your growth ambition.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <div class="why-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+        <div class="why-number">74%</div><div class="why-nl">Average Cost Reduction</div>
+        <div class="why-t">Massive, Immediate Cost Savings</div>
+        <div class="why-d">A senior engineer in France costs €6,500+/month. With Step2Dev, you get identical quality for €1,700. Reinvest the difference into product and runway.</div>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div class="why-number">100%</div><div class="why-nl">Contracts Signed &amp; IP Protected</div>
+        <div class="why-t">Fully Legal &amp; Secure from Day 1</div>
+        <div class="why-d">NDA, GDPR-compliant workflows, IP ownership clauses, and International-law-compatible contracts. Your code and data are always protected.</div>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+        <div class="why-number">0</div><div class="why-nl">HR Tasks on Your Side</div>
+        <div class="why-t">Zero HR Management — Ever</div>
+        <div class="why-d">Payroll, tax filings, performance reviews, replacements, and onboarding — all on us. You just tell us what needs to be built.</div>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <div class="why-number">5★</div><div class="why-nl">Client Satisfaction Score</div>
+        <div class="why-t">Vetted, English-Fluent Engineers</div>
+        <div class="why-d">Every engineer passes a rigorous technical screen, English communication assessment, and culture-fit evaluation before ever meeting you.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team">
+  <div class="reveal" style="text-align:center;max-width:680px;margin:0 auto 3.5rem">
+    <div class="s-label">Engineer Profiles</div>
+    <h2 class="s-title">The Engineers You'll<br/><em>Actually Work With</em></h2>
+    <p class="s-desc" style="margin:0 auto">Vetted, English-fluent, and ready to ship from day one. Here's what each level looks like in practice.</p>
+  </div>
+  <div class="team-grid">
+    <div class="team-card reveal">
+      <div class="tc-top"><div class="tc-avatar" style="background:linear-gradient(135deg,#F97316,#ea580c)">SEN</div></div>
+      <div class="tc-body"><span class="tc-level">Senior Engineer</span><div class="tc-name">Senior Profile</div><div class="tc-role">DevOps Architect / Tech Lead / Backend</div><div class="tc-pills"><span class="pill">AWS / GCP</span><span class="pill">Kubernetes</span><span class="pill">Terraform</span><span class="pill">Python</span><span class="pill">6+ Years Exp</span></div><div class="tc-rate">€1,700<span>/month</span></div></div>
+    </div>
+    <div class="team-card reveal">
+      <div class="tc-top mid"><div class="tc-avatar" style="background:linear-gradient(135deg,#1E3A8A,#2d5be3)">MID</div></div>
+      <div class="tc-body"><span class="tc-level" style="background:rgba(45,91,227,.1);color:#2d5be3">Mid-Level Engineer</span><div class="tc-name">Mid-Level Profile</div><div class="tc-role">Full-Stack / Backend Developer</div><div class="tc-pills"><span class="pill">React</span><span class="pill">Node.js</span><span class="pill">PostgreSQL</span><span class="pill">Docker</span><span class="pill">3–5 Years Exp</span></div><div class="tc-rate" style="color:#2d5be3">€1,100<span>/month</span></div></div>
+    </div>
+    <div class="team-card reveal">
+      <div class="tc-top jun"><div class="tc-avatar" style="background:linear-gradient(135deg,#0f5a3a,#0d9e6e)">JR</div></div>
+      <div class="tc-body"><span class="tc-level" style="background:rgba(13,158,110,.1);color:#0d9e6e">Fresher / Junior</span><div class="tc-name">Fresher Profile</div><div class="tc-role">Junior Developer / QA Engineer</div><div class="tc-pills"><span class="pill">Python</span><span class="pill">Django</span><span class="pill">MySQL</span><span class="pill">Git</span><span class="pill">0–2 Years Exp</span></div><div class="tc-rate" style="color:#0d9e6e">€650<span>/month</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- COST COMPARISON -->
+<section id="savings">
+  <div class="savings-top reveal">
+    <div class="s-label">Cost Comparison</div>
+    <h2 class="s-title">The Numbers Don't Lie.<br/><em>See Exactly What You Save.</em></h2>
+    <p class="s-desc">Monthly AND annual fully-loaded cost across global markets vs IndoTech. Every figure includes salary, taxes, and benefits.</p>
+  </div>
+  <div class="cost-tabs reveal">
+    <button class="cost-tab active" onclick="switchTab('senior',this)">🔥 Senior Engineer</button>
+    <button class="cost-tab" onclick="switchTab('mid',this)">Mid-Level Engineer</button>
+    <button class="cost-tab" onclick="switchTab('fresher',this)">Fresher / Junior</button>
+  </div>
+  <div class="cost-panel active" id="panel-senior"><div class="table-wrap reveal"><table><thead><tr><th>Country</th><th>Monthly Cost</th><th>Annual Cost</th><th>Monthly Saving</th><th>Annual Saving</th></tr></thead><tbody>
+    <tr><td><div class="flag-cell">🇨🇭 Switzerland</div></td><td>€8,500</td><td>€102,000</td><td><span class="spct">Save 80%</span></td><td><span class="spct">€81,600/yr</span></td></tr>
+    <tr><td><div class="flag-cell">🇺🇸 USA</div></td><td>€8,000</td><td>€96,000</td><td><span class="spct">Save 79%</span></td><td><span class="spct">€75,600/yr</span></td></tr>
+    <tr><td><div class="flag-cell">🇫🇷 France</div></td><td>€6,500</td><td>€78,000</td><td><span class="spct">Save 74%</span></td><td><span class="spct">€57,600/yr</span></td></tr>
+    <tr><td><div class="flag-cell">🇩🇪 Germany</div></td><td>€6,200</td><td>€74,400</td><td><span class="spct">Save 73%</span></td><td><span class="spct">€54,000/yr</span></td></tr>
+    <tr><td><div class="flag-cell">🇬🇧 United Kingdom</div></td><td>€5,800</td><td>€69,600</td><td><span class="spct">Save 71%</span></td><td><span class="spct">€49,200/yr</span></td></tr>
+    <tr class="india-row"><td><div class="flag-cell">🇮🇳 Step2Dev (India)</div></td><td style="color:var(--orange);font-weight:800">€1,700</td><td style="color:var(--orange);font-weight:800">€20,400</td><td><span class="spct best">⭐ Best Value</span></td><td><span class="spct best">⭐ Best Value</span></td></tr>
+  </tbody></table></div></div>
+  <div class="cost-panel" id="panel-mid"><div class="table-wrap reveal"><table><thead><tr><th>Country</th><th>Monthly Cost</th><th>Annual Cost</th><th>Monthly Saving</th><th>Annual Saving</th></tr></thead><tbody>
+    <tr><td><div class="flag-cell">🇨🇭 Switzerland</div></td><td>€6,200</td><td>€74,400</td><td><span class="spct">Save 82%</span></td><td><span class="spct">€61,200/yr</span></td></tr>
+    <tr><td><div class="flag-cell">🇺🇸 USA</div></td><td>€5,800</td><td>€69,600</td><td><span class="spct">Save 81%</span></td><td><span class="spct">€56,400/yr</span></td></tr>
+    <tr><td><div class="flag-cell">🇫🇷 France</div></td><td>€4,500</td><td>€54,000</td><td><span class="spct">Save 76%</span></td><td><span class="spct">€40,800/yr</span></td></tr>
+    <tr><td><div class="flag-cell">🇩🇪 Germany</div></td><td>€4,200</td><td>€50,400</td><td><span class="spct">Save 74%</span></td><td><span class="spct">€37,200/yr</span></td></tr>
+    <tr><td><div class="flag-cell">🇬🇧 United Kingdom</div></td><td>€4,000</td><td>€48,000</td><td><span class="spct">Save 73%</span></td><td><span class="spct">€34,800/yr</span></td></tr>
+    <tr class="india-row"><td><div class="flag-cell">🇮🇳 Step2Dev (India)</div></td><td style="color:var(--orange);font-weight:800">€1,100</td><td style="color:var(--orange);font-weight:800">€13,200</td><td><span class="spct best">⭐ Best Value</span></td><td><span class="spct best">⭐ Best Value</span></td></tr>
+  </tbody></table></div></div>
+  <div class="cost-panel" id="panel-fresher"><div class="table-wrap reveal"><table><thead><tr><th>Country</th><th>Monthly Cost</th><th>Annual Cost</th><th>Monthly Saving</th><th>Annual Saving</th></tr></thead><tbody>
+    <tr><td><div class="flag-cell">🇨🇭 Switzerland</div></td><td>€4,200</td><td>€50,400</td><td><span class="spct">Save 85%</span></td><td><span class="spct">€42,600/yr</span></td></tr>
+    <tr><td><div class="flag-cell">🇺🇸 USA</div></td><td>€3,800</td><td>€45,600</td><td><span class="spct">Save 83%</span></td><td><span class="spct">€37,800/yr</span></td></tr>
+    <tr><td><div class="flag-cell">🇫🇷 France</div></td><td>€2,800</td><td>€33,600</td><td><span class="spct">Save 77%</span></td><td><span class="spct">€25,800/yr</span></td></tr>
+    <tr><td><div class="flag-cell">🇩🇪 Germany</div></td><td>€2,600</td><td>€31,200</td><td><span class="spct">Save 75%</span></td><td><span class="spct">€23,400/yr</span></td></tr>
+    <tr><td><div class="flag-cell">🇬🇧 United Kingdom</div></td><td>€2,400</td><td>€28,800</td><td><span class="spct">Save 73%</span></td><td><span class="spct">€21,000/yr</span></td></tr>
+    <tr class="india-row"><td><div class="flag-cell">🇮🇳 Step2Dev (India)</div></td><td style="color:var(--orange);font-weight:800">€650</td><td style="color:var(--orange);font-weight:800">€7,800</td><td><span class="spct best">⭐ Best Value</span></td><td><span class="spct best">⭐ Best Value</span></td></tr>
+  </tbody></table></div></div>
+  <div class="benefits-strip">
+    <div class="ben-card reveal"><div class="ben-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><div><div class="ben-t">Redirect Savings to Growth</div><div class="ben-d">Put €4,800/month saved directly into product, marketing, or extending your runway.</div></div></div>
+    <div class="ben-card reveal"><div class="ben-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div><div class="ben-t">Hire in 48h, Not 3 Months</div><div class="ben-d">Skip job boards, interviews, and notice periods. Your engineer starts this week.</div></div></div>
+    <div class="ben-card reveal"><div class="ben-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/></svg></div><div><div class="ben-t">Zero HR Overhead</div><div class="ben-d">Payroll, contracts, compliance, and performance management — all on us, forever.</div></div></div>
+    <div class="ben-card reveal"><div class="ben-icon"><svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div><div><div class="ben-t">Scale Instantly</div><div class="ben-d">From 1 to 10 engineers in 2 weeks. No severance. Pure startup-grade flexibility.</div></div></div>
+  </div>
+</section>
 
 <!-- ══════════════════════ ROI CALCULATOR ══════════════════════ -->
 <section id="roi">
@@ -385,468 +770,6 @@ tbody td{padding:12px 18px;vertical-align:middle}
   </div>
 </section>
 
-
-/* CONTACT */
-#contact{background:linear-gradient(140deg,#060f35 0%,#0d2060 50%,#1E3A8A 100%);position:relative;overflow:hidden}
-#contact .hero-grid{opacity:.4}
-.contact-inner{display:grid;grid-template-columns:1fr 1fr;gap:4rem;position:relative;z-index:2;align-items:center}
-@media(max-width:820px){.contact-inner{grid-template-columns:1fr}}
-.cl h2{font-family:'Syne',sans-serif;font-size:clamp(1.85rem,3.5vw,2.7rem);font-weight:800;color:#fff;margin-bottom:1rem;line-height:1.13}
-.cl h2 span{color:var(--orange)}
-.cl p{color:rgba(255,255,255,.68);font-size:.98rem;line-height:1.75;margin-bottom:2rem}
-.contact-extras{display:flex;flex-direction:column;gap:.8rem}
-.ce{display:flex;align-items:center;gap:10px;color:rgba(255,255,255,.75);font-size:.88rem}
-.ce svg{width:18px;height:18px;fill:none;stroke:var(--orange);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
-.contact-form{background:rgba(255,255,255,.065);border:1px solid rgba(255,255,255,.12);border-radius:26px;padding:2.5rem;backdrop-filter:blur(10px)}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
-@media(max-width:480px){.form-row{grid-template-columns:1fr}}
-.fg{display:flex;flex-direction:column;gap:6px;margin-bottom:1rem}
-.fg label{font-size:.78rem;font-weight:600;color:rgba(255,255,255,.65)}
-.fg input,.fg textarea,.fg select{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:10px;padding:.75rem 1rem;font-size:.9rem;color:#fff;font-family:'DM Sans',sans-serif;outline:none;resize:vertical;transition:border-color .2s,background .2s}
-.fg input::placeholder,.fg textarea::placeholder{color:rgba(255,255,255,.32)}
-.fg input:focus,.fg textarea:focus,.fg select:focus{border-color:var(--orange);background:rgba(255,255,255,.11)}
-.fg select option{background:#0d2060;color:#fff}
-.form-submit{width:100%;padding:1.05rem;background:var(--orange);color:#fff;border:none;border-radius:12px;font-size:1rem;font-weight:700;font-family:'DM Sans',sans-serif;cursor:pointer;box-shadow:0 4px 20px rgba(249,115,22,.4);transition:transform .2s,box-shadow .2s;letter-spacing:.01em}
-.form-submit:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(249,115,22,.5)}
-.form-note{text-align:center;font-size:.73rem;color:rgba(255,255,255,.38);margin-top:.75rem}
-
-/* FOOTER */
-footer{background:var(--blue-dark);padding:3.5rem 5vw}
-.footer-inner{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:2rem}
-.fb-logo{font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:800;color:#fff}
-.fb-logo span{color:var(--orange)}
-.fb-tagline{font-size:.8rem;color:rgba(255,255,255,.45);margin-top:5px;max-width:220px;line-height:1.6}
-.footer-links h4{font-family:'Syne',sans-serif;font-size:.82rem;font-weight:700;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.9rem}
-.footer-links ul{list-style:none;display:flex;flex-direction:column;gap:.5rem}
-.footer-links a{font-size:.85rem;color:rgba(255,255,255,.55);text-decoration:none;transition:color .2s}
-.footer-links a:hover{color:var(--orange)}
-.footer-socials{display:flex;gap:10px;margin-top:1rem}
-.soc-btn{width:38px;height:38px;border:1px solid rgba(255,255,255,.13);border-radius:10px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.55);text-decoration:none;transition:all .2s}
-.soc-btn:hover{background:var(--orange);border-color:var(--orange);color:#fff}
-.soc-btn svg{width:16px;height:16px;fill:currentColor}
-.footer-bottom{margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.07);display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem;font-size:.75rem;color:rgba(255,255,255,.3)}
-
-/* WhatsApp float */
-.wa-float{position:fixed;bottom:28px;right:28px;z-index:999;width:58px;height:58px;border-radius:50%;background:#25d366;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 24px rgba(37,211,102,.5);text-decoration:none;animation:wafl 3s ease-in-out infinite}
-.wa-float:hover{transform:scale(1.12)!important;animation:none}
-.wa-float svg{width:30px;height:30px;fill:#fff}
-@keyframes wafl{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
-
-/* Responsive */
-@media(max-width:720px){
-  .nav-links{display:none}
-  .nav-hamburger{display:flex}
-  section{padding:72px 5vw}
-  .about-values{grid-template-columns:1fr}
-  .founders-grid{grid-template-columns:1fr}
-}
-@media(max-width:480px){
-  .hero-h1{font-size:2rem}
-  .s-title{font-size:1.7rem}
-  .hero-actions{flex-direction:column}
-  .btn-primary,.btn-ghost{text-align:center}
-  .hero-stats{gap:1.5rem}
-}
-</style>
-</head>
-<body>
-
-<div class="scroll-line" id="scrollLine"></div>
-
-<!-- NAV -->
-<nav id="navbar">
-  <a href="#hero" class="nav-logo">Step<span>2Dev</span></a>
-  <ul class="nav-links">
-    <li><a href="#how">How It Works</a></li>
-    <li><a href="#about">About Us</a></li>
-    <li><a href="#why">Why Us</a></li>
-    <li><a href="#team">Our Team</a></li>
-    <li><a href="#savings">Cost Savings</a></li>
-  </ul>
-  <a href="#contact" class="nav-cta">🚀 Hire Engineers Now</a>
-  <button class="nav-hamburger" id="hamburger" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
-
-<!-- HERO -->
-<section id="hero">
-  <div class="hero-grid"></div>
-  <div class="blob b1"></div>
-  <div class="blob b2"></div>
-  <div class="blob b3"></div>
-
-  <div class="hero-content">
-    <div class="hero-badge">🇮🇳 → 🇫🇷 &nbsp;India to France &amp; Europe &nbsp;•&nbsp; Now Onboarding Clients</div>
-    <h1 class="hero-h1">
-      Stop Overpaying for<br/>
-      <em>World-Class Engineers.</em>
-      <span class="line2">We Deliver. You Grow.</span>
-    </h1>
-    <p class="hero-sub">
-      Your French startup deserves elite DevOps and software engineers — without the €6,500/month price tag. We hire, manage, and report weekly so you focus on what matters: shipping your product.
-    </p>
-    <div class="hero-actions">
-      <a href="#contact" class="btn-primary">🚀 Book Your Pilot Engineer</a>
-      <a href="#savings" class="btn-ghost">See Full Cost Breakdown →</a>
-    </div>
-    <div class="hero-stats">
-      <div>
-        <div class="hs-num">74%</div>
-        <div class="hs-label">Cost Saved vs France</div>
-      </div>
-      <div>
-        <div class="hs-num">48h</div>
-        <div class="hs-label">Time to First Engineer</div>
-      </div>
-      <div>
-        <div class="hs-num">100%</div>
-        <div class="hs-label">Fully Managed</div>
-      </div>
-      <div>
-        <div class="hs-num">0</div>
-        <div class="hs-label">HR Headaches</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="hero-card">
-    <div class="hcard">
-      <div class="hcard-head">
-        <span class="hcard-title">Monthly Savings — Senior</span>
-        <span class="live-badge">● LIVE</span>
-      </div>
-      <div class="hcard-big">€4,800 / mo</div>
-      <div class="hcard-sub">Saved vs hiring locally in France</div>
-    </div>
-    <div class="hcard">
-      <div class="hcard-row">
-        <div class="hcard-mini">
-          <div class="mini-label">France Cost</div>
-          <div class="mini-val o">€6,500</div>
-        </div>
-        <div class="hcard-mini">
-          <div class="mini-label">IndoTech</div>
-          <div class="mini-val g">€1,700</div>
-        </div>
-        <div class="hcard-mini">
-          <div class="mini-label">You Save</div>
-          <div class="mini-val g">74%</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- HOW WE HELP -->
-<section id="how">
-  <div class="reveal" style="text-align:center;max-width:700px;margin:0 auto 3rem">
-    <div class="s-label">Our Process</div>
-    <h2 class="s-title">Zero to <em>Deployed Engineers</em><br/>in 3 Simple Steps</h2>
-    <p class="s-desc" style="margin:0 auto">No lengthy hiring pipelines. No HR overhead. Just elite engineers embedded in your team — fully managed, fully accountable.</p>
-  </div>
-  <div class="steps-grid">
-    <div class="step-card reveal">
-      <span class="step-n">01</span>
-      <div class="step-icon">
-        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-      </div>
-      <div class="step-t">We Source &amp; Hire Top Engineers</div>
-      <div class="step-d">We identify, vet, and onboard India's best DevOps and software engineers — perfectly matched to your tech stack and culture. Done in 48 hours.</div>
-    </div>
-    <div class="step-card reveal">
-      <span class="step-n">02</span>
-      <div class="step-icon">
-        <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-      </div>
-      <div class="step-t">Engineers Execute &amp; Report Weekly</div>
-      <div class="step-d">Your dedicated engineer works full-time on your roadmap. Weekly video calls, Slack access, sprint reports, and full transparency — always.</div>
-    </div>
-    <div class="step-card reveal">
-      <span class="step-n">03</span>
-      <div class="step-icon">
-        <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-      </div>
-      <div class="step-t">You Get Results, Without the Hassle</div>
-      <div class="step-d">We handle payroll, contracts, compliance, and performance reviews. You stay focused on shipping. Scale up or down in 2 weeks, anytime.</div>
-    </div>
-  </div>
-</section>
-
-<!-- ABOUT US -->
-<section id="about">
-  <div class="about-inner">
-    <div class="reveal">
-      <div class="s-label">About Us</div>
-      <h2 class="s-title">Built by Engineers,<br/><span class="blue">For CTOs Who Think Big</span></h2>
-      <p class="s-desc">Step2Dev was founded by Yash Kumar and Naman Kumar — two engineers who believed world-class technical talent shouldn't be gated behind geography or inflated local salaries. We bridge the gap between Europe's fastest-growing startups and India's finest engineers.</p>
-      <div class="about-values">
-        <div class="av-card">
-          <div class="av-icon">🎯</div>
-          <div class="av-title">Mission-Driven</div>
-          <div class="av-text">We exist to make elite engineering accessible to every startup, regardless of budget.</div>
-        </div>
-        <div class="av-card">
-          <div class="av-icon">🔒</div>
-          <div class="av-title">Trust First</div>
-          <div class="av-text">Signed NDAs, GDPR-compliant processes, and full IP protection on every engagement.</div>
-        </div>
-        <div class="av-card">
-          <div class="av-icon">⚡</div>
-          <div class="av-title">Speed &amp; Quality</div>
-          <div class="av-text">48-hour onboarding. Engineers who hit the ground running from day one.</div>
-        </div>
-        <div class="av-card">
-          <div class="av-icon">📈</div>
-          <div class="av-title">Elastic Scaling</div>
-          <div class="av-text">Grow from 1 to 10 engineers without a single job post or interview to conduct.</div>
-        </div>
-      </div>
-    </div>
-    <div class="reveal">
-      <div class="s-label">Meet the Founders</div>
-      <h2 class="s-title" style="margin-bottom:1.5rem">The Minds Behind<br/><em>IndoTech</em></h2>
-      <div class="founders-grid">
-        <div class="founder-card">
-          <div class="fc-top yash">
-            <span class="fc-founder-badge">Founder</span>
-            <div class="fc-avatar yash">YK</div>
-          </div>
-          <div class="fc-body">
-            <span class="fc-role-badge">Founder &amp; CEO</span>
-            <div class="fc-name">Yash Kumar</div>
-            <div class="fc-title">DevOps Engineer &amp; Cloud Architect</div>
-            <div class="fc-skills">
-              <span class="pill">AWS</span><span class="pill">Kubernetes</span>
-              <span class="pill">Terraform</span><span class="pill">CI/CD</span>
-              <span class="pill">Docker</span>
-            </div>
-            <div class="fc-quote">"Great infrastructure should be invisible — it just works, at any scale."</div>
-          </div>
-        </div>
-        <div class="founder-card">
-          <div class="fc-top naman">
-            <span class="fc-founder-badge">Co-Founder</span>
-            <div class="fc-avatar naman">NK</div>
-          </div>
-          <div class="fc-body">
-            <span class="fc-role-badge" style="background:rgba(45,91,227,.08);color:#2d5be3">Co-Founder &amp; CTO</span>
-            <div class="fc-name">Naman Kumar</div>
-            <div class="fc-title">Senior Software Engineer</div>
-            <div class="fc-skills">
-              <span class="pill">React</span><span class="pill">Node.js</span>
-              <span class="pill">Python</span><span class="pill">PostgreSQL</span>
-              <span class="pill">System Design</span>
-            </div>
-            <div class="fc-quote">"Clean code, clear communication, consistent delivery — that's the Step2Dev standard."</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- WHY CHOOSE US -->
-<section id="why">
-  <div class="hero-grid"></div>
-  <div class="why-inner">
-    <div class="why-top reveal">
-      <div class="s-label">Why Step2Dev</div>
-      <h2 class="s-title">6 Reasons Smart CTOs<br/>Choose Us Over <em>Local Hiring</em></h2>
-      <p class="s-desc">We don't just supply engineers — we become an extension of your team, your standards, and your growth ambition.</p>
-    </div>
-    <div class="why-grid">
-      <div class="why-card reveal">
-        <div class="why-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
-        <div class="why-number">74%</div>
-        <div class="why-nl">Average Cost Reduction</div>
-        <div class="why-t">Massive, Immediate Cost Savings</div>
-        <div class="why-d">A senior engineer in France costs €6,500+/month. With IndoTech, you get identical quality for €1,700. Reinvest the difference into product and runway.</div>
-      </div>
-      <div class="why-card reveal">
-        <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-        <div class="why-number">100%</div>
-        <div class="why-nl">Contracts Signed &amp; IP Protected</div>
-        <div class="why-t">Fully Legal &amp; Secure from Day 1</div>
-        <div class="why-d">NDA, GDPR-compliant workflows, IP ownership clauses, and International-law-compatible contracts. Your code and data are always protected.</div>
-      </div>
-      <div class="why-card reveal">
-        <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-        <div class="why-number">0</div>
-        <div class="why-nl">HR Tasks on Your Side</div>
-        <div class="why-t">Zero HR Management — Ever</div>
-        <div class="why-d">Payroll, tax filings, performance reviews, replacements, and onboarding — all on us. You just tell us what needs to be built.</div>
-      </div>
-      <div class="why-card reveal">
-        <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-        <div class="why-number">5★</div>
-        <div class="why-nl">Client Satisfaction Score</div>
-        <div class="why-t">Vetted, English-Fluent Engineers</div>
-        <div class="why-d">Every engineer passes a rigorous technical screen, English communication assessment, and culture-fit evaluation before ever meeting you.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- OUR TEAM / ENGINEER LEVELS -->
-<section id="team">
-  <div class="reveal" style="text-align:center;max-width:680px;margin:0 auto 3.5rem">
-    <div class="s-label">Engineer Profiles</div>
-    <h2 class="s-title">The Engineers You'll<br/><em>Actually Work With</em></h2>
-    <p class="s-desc" style="margin:0 auto">Vetted, English-fluent, and ready to ship from day one. Here's what each level looks like in practice.</p>
-  </div>
-  <div class="team-grid">
-    <div class="team-card reveal">
-      <div class="tc-top">
-        <div class="tc-avatar" style="background:linear-gradient(135deg,#F97316,#ea580c)">SEN</div>
-      </div>
-      <div class="tc-body">
-        <span class="tc-level">Senior Engineer</span>
-        <div class="tc-name">Senior Profile</div>
-        <div class="tc-role">DevOps Architect / Tech Lead / Backend</div>
-        <div class="tc-pills">
-          <span class="pill">AWS / GCP</span><span class="pill">Kubernetes</span>
-          <span class="pill">Terraform</span><span class="pill">Python</span>
-          <span class="pill">6+ Years Exp</span>
-        </div>
-        <div class="tc-rate">€1,700<span>/month</span></div>
-      </div>
-    </div>
-    <div class="team-card reveal">
-      <div class="tc-top mid">
-        <div class="tc-avatar" style="background:linear-gradient(135deg,#1E3A8A,#2d5be3)">MID</div>
-      </div>
-      <div class="tc-body">
-        <span class="tc-level" style="background:rgba(45,91,227,.1);color:#2d5be3">Mid-Level Engineer</span>
-        <div class="tc-name">Mid-Level Profile</div>
-        <div class="tc-role">Full-Stack / Backend Developer</div>
-        <div class="tc-pills">
-          <span class="pill">React</span><span class="pill">Node.js</span>
-          <span class="pill">PostgreSQL</span><span class="pill">Docker</span>
-          <span class="pill">3–5 Years Exp</span>
-        </div>
-        <div class="tc-rate" style="color:#2d5be3">€1,100<span>/month</span></div>
-      </div>
-    </div>
-    <div class="team-card reveal">
-      <div class="tc-top jun">
-        <div class="tc-avatar" style="background:linear-gradient(135deg,#0f5a3a,#0d9e6e)">JR</div>
-      </div>
-      <div class="tc-body">
-        <span class="tc-level" style="background:rgba(13,158,110,.1);color:#0d9e6e">Fresher / Junior</span>
-        <div class="tc-name">Fresher Profile</div>
-        <div class="tc-role">Junior Developer / QA Engineer</div>
-        <div class="tc-pills">
-          <span class="pill">Python</span><span class="pill">Django</span>
-          <span class="pill">MySQL</span><span class="pill">Git</span>
-          <span class="pill">0–2 Years Exp</span>
-        </div>
-        <div class="tc-rate" style="color:#0d9e6e">€650<span>/month</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- COST COMPARISON -->
-<section id="savings">
-  <div class="savings-top reveal">
-    <div class="s-label">Cost Comparison</div>
-    <h2 class="s-title">The Numbers Don't Lie.<br/><em>See Exactly What You Save.</em></h2>
-    <p class="s-desc">Monthly AND annual fully-loaded cost across global markets vs IndoTech. Every figure includes salary, taxes, and benefits.</p>
-  </div>
-
-  <div class="cost-tabs reveal">
-    <button class="cost-tab active" onclick="switchTab('senior',this)">🔥 Senior Engineer</button>
-    <button class="cost-tab" onclick="switchTab('mid',this)">Mid-Level Engineer</button>
-    <button class="cost-tab" onclick="switchTab('fresher',this)">Fresher / Junior</button>
-  </div>
-
-  <div class="cost-panel active" id="panel-senior">
-    <div class="table-wrap reveal">
-      <table>
-        <thead><tr>
-          <th>Country</th>
-          <th>Monthly Cost</th>
-          <th>Annual Cost</th>
-          <th>Monthly Saving</th>
-          <th>Annual Saving</th>
-        </tr></thead>
-        <tbody>
-          <tr><td><div class="flag-cell">🇨🇭 Switzerland</div></td><td>€8,500</td><td>€102,000</td><td><span class="spct">Save 80%</span></td><td><span class="spct">€81,600/yr</span></td></tr>
-          <tr><td><div class="flag-cell">🇺🇸 USA</div></td><td>€8,000</td><td>€96,000</td><td><span class="spct">Save 79%</span></td><td><span class="spct">€75,600/yr</span></td></tr>
-          <tr><td><div class="flag-cell">🇫🇷 France</div></td><td>€6,500</td><td>€78,000</td><td><span class="spct">Save 74%</span></td><td><span class="spct">€57,600/yr</span></td></tr>
-          <tr><td><div class="flag-cell">🇩🇪 Germany</div></td><td>€6,200</td><td>€74,400</td><td><span class="spct">Save 73%</span></td><td><span class="spct">€54,000/yr</span></td></tr>
-          <tr><td><div class="flag-cell">🇬🇧 United Kingdom</div></td><td>€5,800</td><td>€69,600</td><td><span class="spct">Save 71%</span></td><td><span class="spct">€49,200/yr</span></td></tr>
-          <tr class="india-row"><td><div class="flag-cell">🇮🇳 IndoTech (India)</div></td><td style="color:var(--orange);font-weight:800">€1,700</td><td style="color:var(--orange);font-weight:800">€20,400</td><td><span class="spct best">⭐ Best Value</span></td><td><span class="spct best">⭐ Best Value</span></td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <div class="cost-panel" id="panel-mid">
-    <div class="table-wrap reveal">
-      <table>
-        <thead><tr>
-          <th>Country</th>
-          <th>Monthly Cost</th>
-          <th>Annual Cost</th>
-          <th>Monthly Saving</th>
-          <th>Annual Saving</th>
-        </tr></thead>
-        <tbody>
-          <tr><td><div class="flag-cell">🇨🇭 Switzerland</div></td><td>€6,200</td><td>€74,400</td><td><span class="spct">Save 82%</span></td><td><span class="spct">€61,200/yr</span></td></tr>
-          <tr><td><div class="flag-cell">🇺🇸 USA</div></td><td>€5,800</td><td>€69,600</td><td><span class="spct">Save 81%</span></td><td><span class="spct">€56,400/yr</span></td></tr>
-          <tr><td><div class="flag-cell">🇫🇷 France</div></td><td>€4,500</td><td>€54,000</td><td><span class="spct">Save 76%</span></td><td><span class="spct">€40,800/yr</span></td></tr>
-          <tr><td><div class="flag-cell">🇩🇪 Germany</div></td><td>€4,200</td><td>€50,400</td><td><span class="spct">Save 74%</span></td><td><span class="spct">€37,200/yr</span></td></tr>
-          <tr><td><div class="flag-cell">🇬🇧 United Kingdom</div></td><td>€4,000</td><td>€48,000</td><td><span class="spct">Save 73%</span></td><td><span class="spct">€34,800/yr</span></td></tr>
-          <tr class="india-row"><td><div class="flag-cell">🇮🇳 IndoTech (India)</div></td><td style="color:var(--orange);font-weight:800">€1,100</td><td style="color:var(--orange);font-weight:800">€13,200</td><td><span class="spct best">⭐ Best Value</span></td><td><span class="spct best">⭐ Best Value</span></td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <div class="cost-panel" id="panel-fresher">
-    <div class="table-wrap reveal">
-      <table>
-        <thead><tr>
-          <th>Country</th>
-          <th>Monthly Cost</th>
-          <th>Annual Cost</th>
-          <th>Monthly Saving</th>
-          <th>Annual Saving</th>
-        </tr></thead>
-        <tbody>
-          <tr><td><div class="flag-cell">🇨🇭 Switzerland</div></td><td>€4,200</td><td>€50,400</td><td><span class="spct">Save 85%</span></td><td><span class="spct">€42,600/yr</span></td></tr>
-          <tr><td><div class="flag-cell">🇺🇸 USA</div></td><td>€3,800</td><td>€45,600</td><td><span class="spct">Save 83%</span></td><td><span class="spct">€37,800/yr</span></td></tr>
-          <tr><td><div class="flag-cell">🇫🇷 France</div></td><td>€2,800</td><td>€33,600</td><td><span class="spct">Save 77%</span></td><td><span class="spct">€25,800/yr</span></td></tr>
-          <tr><td><div class="flag-cell">🇩🇪 Germany</div></td><td>€2,600</td><td>€31,200</td><td><span class="spct">Save 75%</span></td><td><span class="spct">€23,400/yr</span></td></tr>
-          <tr><td><div class="flag-cell">🇬🇧 United Kingdom</div></td><td>€2,400</td><td>€28,800</td><td><span class="spct">Save 73%</span></td><td><span class="spct">€21,000/yr</span></td></tr>
-          <tr class="india-row"><td><div class="flag-cell">🇮🇳 IndoTech (India)</div></td><td style="color:var(--orange);font-weight:800">€650</td><td style="color:var(--orange);font-weight:800">€7,800</td><td><span class="spct best">⭐ Best Value</span></td><td><span class="spct best">⭐ Best Value</span></td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <div class="benefits-strip">
-    <div class="ben-card reveal">
-      <div class="ben-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
-      <div><div class="ben-t">Redirect Savings to Growth</div><div class="ben-d">Put €4,800/month saved directly into product, marketing, or extending your runway.</div></div>
-    </div>
-    <div class="ben-card reveal">
-      <div class="ben-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-      <div><div class="ben-t">Hire in 48h, Not 3 Months</div><div class="ben-d">Skip job boards, interviews, and notice periods. Your engineer starts this week.</div></div>
-    </div>
-    <div class="ben-card reveal">
-      <div class="ben-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/></svg></div>
-      <div><div class="ben-t">Zero HR Overhead</div><div class="ben-d">Payroll, contracts, compliance, and performance management — all on us, forever.</div></div>
-    </div>
-    <div class="ben-card reveal">
-      <div class="ben-icon"><svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
-      <div><div class="ben-t">Scale Instantly</div><div class="ben-d">From 1 to 10 engineers in 2 weeks. No severance. Pure startup-grade flexibility.</div></div>
-    </div>
-  </div>
-</section>
-
 <!-- CONTACT -->
 <section id="contact">
   <div class="hero-grid"></div>
@@ -854,80 +777,28 @@ footer{background:var(--blue-dark);padding:3.5rem 5vw}
     <div class="cl reveal">
       <div class="s-label" style="color:#fdba74">Book a Pilot</div>
       <h2>Your First Engineer.<br/>This Week.<br/><span>Guaranteed.</span></h2>
-      <p>
-        Fill in the form and we'll respond within 4 business hours with a perfectly
-        matched engineer profile. No commitment. No risk. Just results.
-      </p>
-
+      <p>Fill in the form and we'll respond within 4 business hours with a perfectly matched engineer profile. No commitment. No risk. Just results.</p>
       <div class="contact-extras">
-        <div class="ce">
-          <svg viewBox="0 0 24 24">
-            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.65 3.32 2 2 0 0 1 3.62 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6.29 6.29l1.69-1.69a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-          </svg>
-          <span>WhatsApp: +91 97 16 00 63 71</span>
-        </div>
-
-        <div class="ce">
-          <svg viewBox="0 0 24 24">
-            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-            <polyline points="22,6 12,13 2,6"/>
-          </svg>
-          <span>info@step2dev.com</span>
-        </div>
-
-        <div class="ce">
-          <svg viewBox="0 0 24 24">
-            <circle cx="12" cy="12" r="10"/>
-            <polyline points="12 6 12 12 16 14"/>
-          </svg>
-          <span>Free 30-min strategy call — book now</span>
-        </div>
-
-        <div class="ce">
-          <svg viewBox="0 0 24 24">
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-          </svg>
-          <span>NDA &amp; GDPR-compliant from Day 1</span>
-        </div>
+        <div class="ce"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.65 3.32 2 2 0 0 1 3.62 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6.29 6.29l1.69-1.69a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span>WhatsApp: +91 97 16 00 63 71</span></div>
+        <div class="ce"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><span>info@step2dev.com</span></div>
+        <div class="ce"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span>Free 30-min strategy call — book now</span></div>
+        <div class="ce"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>NDA &amp; GDPR-compliant from Day 1</span></div>
       </div>
     </div>
-
-
-    <!-- FORM -->
     <div class="contact-form reveal">
-
       <form action="https://formsubmit.co/info@step2dev.com" method="POST">
-
-        <!-- FORM SETTINGS -->
         <input type="hidden" name="_subject" value="🚀 New Pilot Engineer Request">
         <input type="hidden" name="_template" value="table">
         <input type="hidden" name="_captcha" value="false">
         <input type="hidden" name="_next" value="https://step2dev.com/thanks.html">
-        <input
-          type="hidden"
-          name="_autoresponse"
-          value="Thanks for contacting Step2Dev 🚀
-We’ve received your request and will reply within 4 business hours."
-        >
-
+        <input type="hidden" name="_autoresponse" value="Thanks for contacting Step2Dev 🚀 We've received your request and will reply within 4 business hours.">
         <div class="form-row">
-          <div class="fg">
-            <label>Full Name *</label>
-            <input type="text" name="Full Name" placeholder="Jean Dupont" required />
-          </div>
-          <div class="fg">
-            <label>Work Email *</label>
-            <input type="email" name="Email" placeholder="jean@startup.fr" required />
-          </div>
+          <div class="fg"><label>Full Name *</label><input type="text" name="Full Name" placeholder="Jean Dupont" required /></div>
+          <div class="fg"><label>Work Email *</label><input type="email" name="Email" placeholder="jean@startup.fr" required /></div>
         </div>
-
         <div class="form-row">
-          <div class="fg">
-            <label>Company Name</label>
-            <input type="text" name="Company" placeholder="Startup SAS" />
-          </div>
-          <div class="fg">
-            <label>Engineer Level Needed</label>
+          <div class="fg"><label>Company Name</label><input type="text" name="Company" placeholder="Startup SAS" /></div>
+          <div class="fg"><label>Engineer Level Needed</label>
             <select name="Engineer Level">
               <option value="">Select level</option>
               <option>Fresher / Junior — €650/mo</option>
@@ -938,27 +809,11 @@ We’ve received your request and will reply within 4 business hours."
             </select>
           </div>
         </div>
-
-        <div class="fg">
-          <label>Your Project &amp; Tech Stack</label>
-          <textarea
-            name="Project Details"
-            rows="3"
-            placeholder="e.g. We're building a SaaS on AWS using React + Node.js..."
-          ></textarea>
-        </div>
-
-        <button type="submit" class="form-submit">
-          🚀 Book My Pilot Engineer &amp; Start Saving Today
-        </button>
-
-        <div class="form-note">
-          🔒 100% confidential. We reply within 4 business hours.
-        </div>
-
+        <div class="fg"><label>Your Project &amp; Tech Stack</label><textarea name="Project Details" rows="3" placeholder="e.g. We're building a SaaS on AWS using React + Node.js..."></textarea></div>
+        <button type="submit" class="form-submit">🚀 Book My Pilot Engineer &amp; Start Saving Today</button>
+        <div class="form-note">🔒 100% confidential. We reply within 4 business hours.</div>
       </form>
     </div>
-
   </div>
 </section>
 
@@ -982,13 +837,15 @@ We’ve received your request and will reply within 4 business hours."
         <li><a href="#why">Why Step2Dev</a></li>
         <li><a href="#team">Engineer Profiles</a></li>
         <li><a href="#savings">Cost Savings</a></li>
+        <li><a href="#roi">ROI Calculator</a></li>
+        <li><a href="#direct">Why Not DIY?</a></li>
         <li><a href="#contact">Book a Pilot</a></li>
       </ul>
     </div>
     <div class="footer-links">
       <h4>Contact</h4>
       <ul>
-        <li><a href="mailto:hello@indotech.agency">📧 info@step2dev.com</a></li>
+        <li><a href="mailto:info@step2dev.com">📧 info@step2dev.com</a></li>
         <li><a href="https://wa.me/9716006371">📱 +91 97 16 00 63 71</a></li>
         <li><a href="https://calendly.com/kashyapy564/30min">📅 Free Discovery Call</a></li>
         <li><a href="#">🇮🇳 Delhi, India</a></li>
@@ -1013,30 +870,26 @@ We’ve received your request and will reply within 4 business hours."
 </a>
 
 <script>
+// Scroll progress + nav shadow
 window.addEventListener('scroll',()=>{
   const pct=(window.scrollY/(document.body.scrollHeight-window.innerHeight))*100;
   document.getElementById('scrollLine').style.width=pct+'%';
   document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>30);
 });
+// Scroll reveal
 const revs=document.querySelectorAll('.reveal');
-const obs=new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),80);obs.unobserve(e.target);}
-  });
-},{threshold:0.1});
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),80);obs.unobserve(e.target);}});
+},{threshold:0.08});
 revs.forEach((el,i)=>{el.style.transitionDelay=`${(i%5)*0.1}s`;obs.observe(el);});
+// Cost table tabs
 function switchTab(level,btn){
   document.querySelectorAll('.cost-tab').forEach(t=>t.classList.remove('active'));
   document.querySelectorAll('.cost-panel').forEach(p=>p.classList.remove('active'));
   btn.classList.add('active');
   document.getElementById('panel-'+level).classList.add('active');
 }
-function handleSubmit(e){
-  e.preventDefault();
-  const btn=e.target;
-  btn.textContent='✅ Request Received! We\'ll contact you within 4 hours.';
-  btn.style.background='#16a34a';btn.disabled=true;
-}
+// Hamburger
 document.getElementById('hamburger').addEventListener('click',()=>{
   const links=document.querySelector('.nav-links');
   const open=links.style.display==='flex';
@@ -1045,6 +898,40 @@ document.getElementById('hamburger').addEventListener('click',()=>{
 document.querySelectorAll('.nav-links a').forEach(a=>{
   a.addEventListener('click',()=>{document.querySelector('.nav-links').style.cssText='';});
 });
+// Myth accordion
+function toggleMyth(card){
+  const wasOpen=card.classList.contains('open');
+  document.querySelectorAll('.myth-card').forEach(c=>c.classList.remove('open'));
+  if(!wasOpen)card.classList.add('open');
+}
+
+// ── ROI MINI CALCULATOR ──
+const roiData={
+  senior:{local:6500,us:1700},
+  mid:{local:4500,us:1100},
+  fresher:{local:2800,us:650}
+};
+let roiLevel='senior';
+function setRoiLevel(lvl,btn){
+  roiLevel=lvl;
+  document.querySelectorAll('.roi-eng-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  updateRoi();
+}
+function updateRoi(){
+  const team=parseInt(document.getElementById('roiTeamSlider').value);
+  const dur=parseInt(document.getElementById('roiDurSlider').value);
+  document.getElementById('roiTeamLbl').textContent=team+(team===1?' engineer':' engineers');
+  document.getElementById('roiDurLbl').textContent=dur+(dur===1?' month':' months');
+  const d=roiData[roiLevel];
+  const local=d.local*team*dur;
+  const us=d.us*team*dur;
+  const save=local-us;
+  document.getElementById('roiFranceVal').textContent='€'+local.toLocaleString();
+  document.getElementById('roiUsVal').textContent='€'+us.toLocaleString();
+  document.getElementById('roiSaveVal').textContent='€'+save.toLocaleString();
+}
+updateRoi();
 </script>
 </body>
 </html>
