@@ -358,22 +358,6 @@ body {
   font-weight: 500;
 }
 
-.stat-trend {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 13px;
-  margin-top: 8px;
-}
-
-.stat-trend.up {
-  color: var(--success);
-}
-
-.stat-trend.down {
-  color: var(--danger);
-}
-
 /* Table */
 .table-container {
   background: var(--bg-card);
@@ -420,14 +404,6 @@ tbody tr {
 
 tbody tr:hover {
   background: var(--bg-hover);
-}
-
-tbody tr.overdue {
-  background: #fef2f2;
-}
-
-tbody tr.action-today {
-  background: #fffbeb;
 }
 
 tbody td {
@@ -483,6 +459,53 @@ tbody td {
   min-height: 100px;
 }
 
+/* Founder Fields */
+.founder-item {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  background: var(--bg-hover);
+  position: relative;
+}
+
+.founder-remove {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: var(--danger);
+  color: white;
+  border: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.founder-header {
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: var(--text-primary);
+  font-size: 14px;
+}
+
+.founder-contacted {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  background: var(--success);
+  color: white;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-top: 8px;
+}
+
 /* Modal */
 .modal {
   display: none;
@@ -506,7 +529,7 @@ tbody td {
 .modal-content {
   background: white;
   border-radius: 16px;
-  max-width: 700px;
+  max-width: 800px;
   width: 100%;
   max-height: 90vh;
   overflow-y: auto;
@@ -572,42 +595,6 @@ tbody td {
 .priority-medium { color: var(--warning); font-weight: 600; }
 .priority-low { color: var(--text-secondary); }
 
-/* Upload Area */
-.upload-area {
-  border: 2px dashed var(--border);
-  border-radius: 12px;
-  padding: 48px 24px;
-  text-align: center;
-  background: var(--bg-hover);
-  transition: all 0.3s;
-  cursor: pointer;
-  margin-bottom: 24px;
-}
-
-.upload-area:hover,
-.upload-area.dragover {
-  border-color: var(--primary);
-  background: rgba(37, 99, 235, 0.05);
-}
-
-.upload-icon {
-  font-size: 48px;
-  margin-bottom: 16px;
-  opacity: 0.5;
-}
-
-.upload-text {
-  font-size: 16px;
-  font-weight: 600;
-  color: var(--text-primary);
-  margin-bottom: 8px;
-}
-
-.upload-hint {
-  font-size: 14px;
-  color: var(--text-secondary);
-}
-
 /* Toast */
 .toast {
   position: fixed;
@@ -649,49 +636,6 @@ tbody td {
   background: var(--danger);
 }
 
-/* Template Manager */
-.template-list {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.template-item {
-  padding: 16px;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  background: var(--bg-hover);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  transition: all 0.2s;
-}
-
-.template-item:hover {
-  border-color: var(--primary);
-  background: white;
-}
-
-.template-name {
-  font-weight: 600;
-  font-size: 14px;
-  margin-bottom: 4px;
-}
-
-.template-preview {
-  font-size: 13px;
-  color: var(--text-secondary);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  max-width: 400px;
-}
-
-.template-actions {
-  display: flex;
-  gap: 8px;
-}
-
 /* Action Buttons */
 .action-btns {
   display: flex;
@@ -722,20 +666,6 @@ tbody td {
 .empty-text {
   font-size: 15px;
   color: var(--text-secondary);
-}
-
-/* Loading Spinner */
-.spinner {
-  width: 20px;
-  height: 20px;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  border-top-color: white;
-  border-radius: 50%;
-  animation: spin 0.8s linear infinite;
-}
-
-@keyframes spin {
-  to { transform: rotate(360deg); }
 }
 
 /* Responsive */
@@ -799,10 +729,6 @@ tbody td {
         <span class="nav-icon">👥</span>
         Prospects
       </button>
-      <button class="nav-item" onclick="switchView('templates')">
-        <span class="nav-icon">📝</span>
-        Email Templates
-      </button>
       <button class="nav-item" onclick="switchView('settings')">
         <span class="nav-icon">⚙️</span>
         Settings
@@ -811,12 +737,12 @@ tbody td {
 
     <div class="stats-mini">
       <div class="stat-mini">
-        <span class="stat-mini-label">Total Prospects</span>
+        <span class="stat-mini-label">Total Companies</span>
         <span class="stat-mini-value" id="sidebar-total">0</span>
       </div>
       <div class="stat-mini">
-        <span class="stat-mini-label">Active Outreach</span>
-        <span class="stat-mini-value" id="sidebar-active">0</span>
+        <span class="stat-mini-label">Total Contacts</span>
+        <span class="stat-mini-value" id="sidebar-contacts">0</span>
       </div>
     </div>
   </aside>
@@ -834,30 +760,30 @@ tbody td {
         <div class="stat-card">
           <div class="stat-header">
             <div>
-              <div class="stat-value" id="stat-today">0</div>
-              <div class="stat-label">Actions Due Today</div>
+              <div class="stat-value" id="stat-companies">0</div>
+              <div class="stat-label">Total Companies</div>
             </div>
-            <div class="stat-icon" style="background: rgba(239, 68, 68, 0.1); color: var(--danger);">⏰</div>
+            <div class="stat-icon" style="background: rgba(37, 99, 235, 0.1); color: var(--primary);">🏢</div>
           </div>
         </div>
 
         <div class="stat-card">
           <div class="stat-header">
             <div>
-              <div class="stat-value" id="stat-overdue">0</div>
-              <div class="stat-label">Overdue Actions</div>
+              <div class="stat-value" id="stat-founders">0</div>
+              <div class="stat-label">Total Founders/Contacts</div>
             </div>
-            <div class="stat-icon" style="background: rgba(245, 158, 11, 0.1); color: var(--warning);">⚠️</div>
+            <div class="stat-icon" style="background: rgba(139, 92, 246, 0.1); color: var(--purple);">👥</div>
           </div>
         </div>
 
         <div class="stat-card">
           <div class="stat-header">
             <div>
-              <div class="stat-value" id="stat-total">0</div>
-              <div class="stat-label">Total Prospects</div>
+              <div class="stat-value" id="stat-contacted">0</div>
+              <div class="stat-label">Contacted</div>
             </div>
-            <div class="stat-icon" style="background: rgba(37, 99, 235, 0.1); color: var(--primary);">👥</div>
+            <div class="stat-icon" style="background: rgba(16, 185, 129, 0.1); color: var(--success);">✉️</div>
           </div>
         </div>
 
@@ -887,31 +813,23 @@ tbody td {
     <div id="prospects-view" class="view" style="display: none;">
       <div class="page-header">
         <h1 class="page-title">Prospects</h1>
-        <p class="page-subtitle">Manage your outreach pipeline</p>
+        <p class="page-subtitle">Manage your outreach pipeline with multiple founders per company</p>
       </div>
 
       <div class="toolbar">
         <button class="btn btn-primary" onclick="openAddModal()">
           <span>➕</span>
-          Add Prospect
-        </button>
-        <button class="btn btn-outline" onclick="openImportModal()">
-          <span>📥</span>
-          Import CSV/Excel
+          Add Company
         </button>
         <button class="btn btn-outline" onclick="exportData()">
           <span>📤</span>
           Export
         </button>
-        <button class="btn btn-outline" onclick="openEmailModal()">
-          <span>✉️</span>
-          Send Bulk Email
-        </button>
       </div>
 
       <div class="card">
         <div class="card-header">
-          <div class="card-title">All Prospects</div>
+          <div class="card-title">All Companies & Founders</div>
           <div style="display: flex; gap: 12px;">
             <select class="form-select" style="width: auto;" id="filter-status" onchange="applyFilters()">
               <option value="">All Statuses</option>
@@ -921,21 +839,19 @@ tbody td {
               <option value="Booked">Booked</option>
               <option value="Not Interested">Not Interested</option>
             </select>
-            <input type="text" class="form-input" style="width: 250px;" id="search-input" placeholder="Search prospects..." oninput="applyFilters()">
+            <input type="text" class="form-input" style="width: 250px;" id="search-input" placeholder="Search companies..." oninput="applyFilters()">
           </div>
         </div>
         <div class="table-wrapper">
           <table>
             <thead>
               <tr>
-                <th>Actions</th>
                 <th>Company</th>
-                <th>Contact</th>
-                <th>Email</th>
+                <th>Industry</th>
+                <th>Founders / Contacts</th>
                 <th>Status</th>
                 <th>Priority</th>
-                <th>Next Action</th>
-                <th>Last Contact</th>
+                <th>Actions</th>
               </tr>
             </thead>
             <tbody id="prospects-table">
@@ -943,36 +859,8 @@ tbody td {
           </table>
           <div id="empty-state" class="empty-state" style="display: none;">
             <div class="empty-icon">📭</div>
-            <div class="empty-title">No prospects yet</div>
-            <div class="empty-text">Add your first prospect or import from CSV</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Templates View -->
-    <div id="templates-view" class="view" style="display: none;">
-      <div class="page-header">
-        <h1 class="page-title">Email Templates</h1>
-        <p class="page-subtitle">Manage your outreach templates</p>
-      </div>
-
-      <div class="toolbar">
-        <button class="btn btn-primary" onclick="openTemplateModal()">
-          <span>➕</span>
-          Create Template
-        </button>
-      </div>
-
-      <div class="card">
-        <div class="card-body">
-          <div class="template-list" id="template-list">
-            <!-- Templates will be rendered here -->
-          </div>
-          <div id="templates-empty" class="empty-state" style="display: none;">
-            <div class="empty-icon">📝</div>
-            <div class="empty-title">No templates yet</div>
-            <div class="empty-text">Create your first email template</div>
+            <div class="empty-title">No companies yet</div>
+            <div class="empty-text">Add your first company and founders</div>
           </div>
         </div>
       </div>
@@ -987,7 +875,7 @@ tbody td {
 
       <div class="card">
         <div class="card-header">
-          <div class="card-title">Gmail Integration</div>
+          <div class="card-title">Your Information</div>
         </div>
         <div class="card-body">
           <div class="form-group">
@@ -995,7 +883,7 @@ tbody td {
             <input type="email" class="form-input" id="settings-email" placeholder="your@email.com">
           </div>
           <div class="form-group">
-            <label class="form-label">Default From Name</label>
+            <label class="form-label">Your Name</label>
             <input type="text" class="form-input" id="settings-name" placeholder="Your Name">
           </div>
           <button class="btn btn-primary" onclick="saveSettings()">Save Settings</button>
@@ -1008,7 +896,7 @@ tbody td {
         </div>
         <div class="card-body">
           <button class="btn btn-danger" onclick="clearAllData()">Clear All Data</button>
-          <p style="margin-top: 12px; font-size: 14px; color: var(--text-secondary);">This will delete all prospects, templates, and settings. This action cannot be undone.</p>
+          <p style="margin-top: 12px; font-size: 14px; color: var(--text-secondary);">This will delete all companies and founder contacts. This action cannot be undone.</p>
         </div>
       </div>
     </div>
@@ -1019,8 +907,8 @@ tbody td {
 <div class="modal" id="prospect-modal">
   <div class="modal-content">
     <div class="modal-header">
-      <h2 class="modal-title" id="modal-title">Add New Prospect</h2>
-      <button class="btn btn-icon" onclick="closeModal('prospect-modal')" style="background: transparent; color: var(--text-secondary);">&times;</button>
+      <h2 class="modal-title" id="modal-title">Add New Company</h2>
+      <button class="btn btn-icon" onclick="closeModal('prospect-modal')" style="background: transparent; color: var(--text-secondary); font-size: 24px;">&times;</button>
     </div>
     <div class="modal-body">
       <form id="prospect-form" onsubmit="saveProspect(event)">
@@ -1033,26 +921,30 @@ tbody td {
           </div>
           <div class="form-group">
             <label class="form-label">Industry</label>
-            <input type="text" class="form-input" id="industry">
+            <input type="text" class="form-input" id="industry" placeholder="SaaS, FinTech, etc.">
           </div>
         </div>
 
         <div class="form-row">
           <div class="form-group">
-            <label class="form-label">Contact Name *</label>
-            <input type="text" class="form-input" id="contact-name" required>
+            <label class="form-label">Location</label>
+            <input type="text" class="form-input" id="location" placeholder="Paris, France">
           </div>
           <div class="form-group">
-            <label class="form-label">Email *</label>
-            <input type="email" class="form-input" id="email" required>
+            <label class="form-label">Website</label>
+            <input type="url" class="form-input" id="website" placeholder="https://company.com">
           </div>
         </div>
 
-        <div class="form-row">
-          <div class="form-group">
-            <label class="form-label">LinkedIn URL</label>
-            <input type="url" class="form-input" id="linkedin">
+        <div class="form-group">
+          <label class="form-label">Founders / Decision Makers</label>
+          <div id="founders-list" style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 12px;">
+            <!-- Founders will be added here -->
           </div>
+          <button type="button" class="btn btn-outline btn-sm" onclick="addFounderField()">+ Add Founder/Contact</button>
+        </div>
+
+        <div class="form-row">
           <div class="form-group">
             <label class="form-label">Priority</label>
             <select class="form-select" id="priority">
@@ -1061,14 +953,6 @@ tbody td {
               <option value="Low">Low</option>
             </select>
           </div>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label">Notes</label>
-          <textarea class="form-textarea" id="notes"></textarea>
-        </div>
-
-        <div class="form-row">
           <div class="form-group">
             <label class="form-label">Status</label>
             <select class="form-select" id="status">
@@ -1079,110 +963,17 @@ tbody td {
               <option value="Not Interested">Not Interested</option>
             </select>
           </div>
-          <div class="form-group">
-            <label class="form-label">&nbsp;</label>
-          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Notes</label>
+          <textarea class="form-textarea" id="notes" placeholder="Any relevant context about this company..."></textarea>
         </div>
       </form>
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-outline" onclick="closeModal('prospect-modal')">Cancel</button>
-      <button type="submit" form="prospect-form" class="btn btn-primary">Save Prospect</button>
-    </div>
-  </div>
-</div>
-
-<!-- Import Modal -->
-<div class="modal" id="import-modal">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h2 class="modal-title">Import Prospects</h2>
-      <button class="btn btn-icon" onclick="closeModal('import-modal')" style="background: transparent; color: var(--text-secondary);">&times;</button>
-    </div>
-    <div class="modal-body">
-      <div class="upload-area" id="upload-area" onclick="document.getElementById('file-input').click()">
-        <div class="upload-icon">📁</div>
-        <div class="upload-text">Click to upload or drag and drop</div>
-        <div class="upload-hint">Supports CSV and Excel files (.csv, .xlsx)</div>
-        <input type="file" id="file-input" accept=".csv,.xlsx,.xls" style="display: none;" onchange="handleFileUpload(event)">
-      </div>
-      <div id="import-preview" style="display: none; margin-top: 24px;">
-        <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 12px;">Preview</h3>
-        <div style="max-height: 300px; overflow-y: auto; border: 1px solid var(--border); border-radius: 8px; padding: 12px; background: var(--bg-hover);">
-          <pre id="import-data" style="font-size: 12px; margin: 0; font-family: 'JetBrains Mono', monospace;"></pre>
-        </div>
-      </div>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-outline" onclick="closeModal('import-modal')">Cancel</button>
-      <button type="button" class="btn btn-primary" id="import-confirm-btn" style="display: none;" onclick="confirmImport()">Import <span id="import-count"></span> Prospects</button>
-    </div>
-  </div>
-</div>
-
-<!-- Email Modal -->
-<div class="modal" id="email-modal">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h2 class="modal-title">Send Email</h2>
-      <button class="btn btn-icon" onclick="closeModal('email-modal')" style="background: transparent; color: var(--text-secondary);">&times;</button>
-    </div>
-    <div class="modal-body">
-      <div class="form-group">
-        <label class="form-label">Select Template</label>
-        <select class="form-select" id="email-template-select" onchange="loadTemplate()">
-          <option value="">-- Select a template --</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label class="form-label">Subject</label>
-        <input type="text" class="form-input" id="email-subject">
-      </div>
-      <div class="form-group">
-        <label class="form-label">Message</label>
-        <textarea class="form-textarea" id="email-body" rows="10"></textarea>
-      </div>
-      <div style="padding: 12px; background: rgba(37, 99, 235, 0.1); border-radius: 8px; font-size: 13px; color: var(--primary);">
-        💡 Use variables: {{company}}, {{name}}, {{email}}
-      </div>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-outline" onclick="closeModal('email-modal')">Cancel</button>
-      <button type="button" class="btn btn-primary" onclick="sendEmail()">Open in Gmail</button>
-    </div>
-  </div>
-</div>
-
-<!-- Template Modal -->
-<div class="modal" id="template-modal">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h2 class="modal-title" id="template-modal-title">Create Template</h2>
-      <button class="btn btn-icon" onclick="closeModal('template-modal')" style="background: transparent; color: var(--text-secondary);">&times;</button>
-    </div>
-    <div class="modal-body">
-      <form id="template-form" onsubmit="saveTemplate(event)">
-        <input type="hidden" id="template-id">
-        <div class="form-group">
-          <label class="form-label">Template Name *</label>
-          <input type="text" class="form-input" id="template-name" required>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Subject Line *</label>
-          <input type="text" class="form-input" id="template-subject" required>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Email Body *</label>
-          <textarea class="form-textarea" id="template-body" rows="12" required></textarea>
-        </div>
-        <div style="padding: 12px; background: rgba(37, 99, 235, 0.1); border-radius: 8px; font-size: 13px; color: var(--primary);">
-          💡 Available variables: {{company}}, {{name}}, {{email}}, {{industry}}
-        </div>
-      </form>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-outline" onclick="closeModal('template-modal')">Cancel</button>
-      <button type="submit" form="template-form" class="btn btn-primary">Save Template</button>
+      <button type="submit" form="prospect-form" class="btn btn-primary">Save Company</button>
     </div>
   </div>
 </div>
@@ -1192,136 +983,125 @@ tbody td {
   <span id="toast-message"></span>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <script>
 // ==================== DATA MANAGEMENT ====================
 let prospects = [];
-let templates = [];
-let settings = {
-  email: '',
-  name: ''
-};
+let settings = { email: '', name: '' };
 let editingId = null;
-let editingTemplateId = null;
-let importedData = null;
+let founderCounter = 0;
 
 // Load data from localStorage
 function loadData() {
-  const savedProspects = localStorage.getItem('outreach-prospects-pro');
-  const savedTemplates = localStorage.getItem('outreach-templates');
+  const savedProspects = localStorage.getItem('outreach-prospects-with-founders');
   const savedSettings = localStorage.getItem('outreach-settings');
   
   if (savedProspects) prospects = JSON.parse(savedProspects);
-  if (savedTemplates) templates = JSON.parse(savedTemplates);
   if (savedSettings) settings = JSON.parse(savedSettings);
-  
-  // Add default templates if none exist
-  if (templates.length === 0) {
-    templates = [
-      {
-        id: 'default-1',
-        name: 'Initial Outreach',
-        subject: 'Save 70% on Engineering Costs - {{company}}',
-        body: `Hi {{name}},
-
-I noticed {{company}} is growing in the {{industry}} space. 
-
-At Step2Dev, we help European startups save 70%+ on engineering costs by connecting them with elite Indian engineers — fully managed, vetted, and ready to ship from day one.
-
-Would you be open to a quick 15-minute call to explore if this could help {{company}} scale faster?
-
-Best regards,
-Yash Kumar
-Founder, Step2Dev`
-      },
-      {
-        id: 'default-2',
-        name: 'Follow-up 1',
-        subject: 'Re: Engineering Costs for {{company}}',
-        body: `Hi {{name}},
-
-Following up on my previous message about Step2Dev.
-
-Just wanted to share: we've helped startups reduce engineering costs by 74% while maintaining (or improving) code quality.
-
-Quick question: Are you currently hiring engineers, or planning to in the next 3-6 months?
-
-Best,
-Yash`
-      },
-      {
-        id: 'default-3',
-        name: 'Follow-up 2',
-        subject: 'Quick question about {{company}}',
-        body: `Hi {{name}},
-
-I realize you're probably swamped, so I'll keep this brief.
-
-If hiring costs are a concern for {{company}}, I'd love to show you our ROI calculator — it breaks down exactly how much you'd save vs. hiring locally.
-
-Worth a 10-minute call?
-
-Best,
-Yash`
-      }
-    ];
-    localStorage.setItem('outreach-templates', JSON.stringify(templates));
-  }
 }
 
 // Save data
 function saveData() {
-  localStorage.setItem('outreach-prospects-pro', JSON.stringify(prospects));
-  localStorage.setItem('outreach-templates', JSON.stringify(templates));
+  localStorage.setItem('outreach-prospects-with-founders', JSON.stringify(prospects));
   localStorage.setItem('outreach-settings', JSON.stringify(settings));
 }
 
 // ==================== VIEW SWITCHING ====================
 function switchView(view) {
-  // Hide all views
   document.querySelectorAll('.view').forEach(v => v.style.display = 'none');
-  
-  // Show selected view
   document.getElementById(`${view}-view`).style.display = 'block';
   
-  // Update nav
   document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
   event.target.closest('.nav-item').classList.add('active');
   
-  // Render based on view
   if (view === 'prospects') {
     renderTable();
-  } else if (view === 'templates') {
-    renderTemplates();
   } else if (view === 'settings') {
     loadSettingsForm();
   }
 }
 
+// ==================== FOUNDER FIELD MANAGEMENT ====================
+function addFounderField(founder = null) {
+  const list = document.getElementById('founders-list');
+  const id = founderCounter++;
+  
+  const div = document.createElement('div');
+  div.className = 'founder-item';
+  div.id = `founder-${id}`;
+  div.innerHTML = `
+    <button type="button" class="founder-remove" onclick="removeFounderField(${id})" title="Remove">×</button>
+    <div class="founder-header">Founder/Contact #${id + 1}</div>
+    <div class="form-row" style="margin-bottom: 12px;">
+      <div>
+        <label style="font-size: 12px; color: var(--text-secondary); margin-bottom: 4px; display: block;">Name *</label>
+        <input type="text" class="form-input" name="founder-name-${id}" value="${founder?.name || ''}" placeholder="John Doe" required>
+      </div>
+      <div>
+        <label style="font-size: 12px; color: var(--text-secondary); margin-bottom: 4px; display: block;">Title</label>
+        <input type="text" class="form-input" name="founder-title-${id}" value="${founder?.title || ''}" placeholder="CEO, CTO, etc.">
+      </div>
+    </div>
+    <div class="form-row">
+      <div>
+        <label style="font-size: 12px; color: var(--text-secondary); margin-bottom: 4px; display: block;">Email *</label>
+        <input type="email" class="form-input" name="founder-email-${id}" value="${founder?.email || ''}" placeholder="john@company.com" required>
+      </div>
+      <div>
+        <label style="font-size: 12px; color: var(--text-secondary); margin-bottom: 4px; display: block;">LinkedIn URL</label>
+        <input type="url" class="form-input" name="founder-linkedin-${id}" value="${founder?.linkedin || ''}" placeholder="https://linkedin.com/in/...">
+      </div>
+    </div>
+    ${founder?.contacted ? '<div class="founder-contacted">✅ Contacted on ' + founder.contactedDate + '</div>' : ''}
+  `;
+  
+  list.appendChild(div);
+}
+
+function removeFounderField(id) {
+  const elem = document.getElementById(`founder-${id}`);
+  if (elem) elem.remove();
+}
+
 // ==================== PROSPECT MANAGEMENT ====================
 function openAddModal() {
   editingId = null;
-  document.getElementById('modal-title').textContent = 'Add New Prospect';
+  founderCounter = 0;
+  document.getElementById('modal-title').textContent = 'Add New Company';
   document.getElementById('prospect-form').reset();
   document.getElementById('prospect-id').value = '';
+  document.getElementById('founders-list').innerHTML = '';
+  
+  // Add one founder field by default
+  addFounderField();
+  
   document.getElementById('prospect-modal').classList.add('active');
 }
 
 function openEditModal(id) {
   editingId = id;
+  founderCounter = 0;
   const prospect = prospects.find(p => p.id === id);
   if (!prospect) return;
 
-  document.getElementById('modal-title').textContent = 'Edit Prospect';
+  document.getElementById('modal-title').textContent = 'Edit Company';
   document.getElementById('prospect-id').value = id;
   document.getElementById('company-name').value = prospect.companyName || '';
   document.getElementById('industry').value = prospect.industry || '';
-  document.getElementById('contact-name').value = prospect.contactName || '';
-  document.getElementById('email').value = prospect.email || '';
-  document.getElementById('linkedin').value = prospect.linkedin || '';
+  document.getElementById('location').value = prospect.location || '';
+  document.getElementById('website').value = prospect.website || '';
   document.getElementById('priority').value = prospect.priority || 'Medium';
   document.getElementById('status').value = prospect.status || 'New';
   document.getElementById('notes').value = prospect.notes || '';
+
+  // Load founders
+  document.getElementById('founders-list').innerHTML = '';
+  if (prospect.founders && prospect.founders.length > 0) {
+    prospect.founders.forEach(founder => {
+      addFounderField(founder);
+    });
+  } else {
+    addFounderField();
+  }
 
   document.getElementById('prospect-modal').classList.add('active');
 }
@@ -1329,19 +1109,41 @@ function openEditModal(id) {
 function saveProspect(event) {
   event.preventDefault();
 
+  // Collect founders
+  const founders = [];
+  const founderElements = document.querySelectorAll('.founder-item');
+  founderElements.forEach((elem, index) => {
+    const name = elem.querySelector(`[name^="founder-name-"]`).value;
+    const title = elem.querySelector(`[name^="founder-title-"]`).value;
+    const email = elem.querySelector(`[name^="founder-email-"]`).value;
+    const linkedin = elem.querySelector(`[name^="founder-linkedin-"]`).value;
+    
+    if (name && email) {
+      const existingFounder = editingId ? 
+        prospects.find(p => p.id === editingId)?.founders?.[index] : null;
+      
+      founders.push({
+        name,
+        title,
+        email,
+        linkedin,
+        contacted: existingFounder?.contacted || false,
+        contactedDate: existingFounder?.contactedDate || null
+      });
+    }
+  });
+
   const prospect = {
     id: editingId || Date.now().toString(),
     companyName: document.getElementById('company-name').value,
     industry: document.getElementById('industry').value,
-    contactName: document.getElementById('contact-name').value,
-    email: document.getElementById('email').value,
-    linkedin: document.getElementById('linkedin').value,
+    location: document.getElementById('location').value,
+    website: document.getElementById('website').value,
     priority: document.getElementById('priority').value,
     status: document.getElementById('status').value,
     notes: document.getElementById('notes').value,
-    createdAt: editingId ? prospects.find(p => p.id === editingId).createdAt : new Date().toISOString(),
-    lastContactDate: editingId ? prospects.find(p => p.id === editingId).lastContactDate : null,
-    contactCount: editingId ? prospects.find(p => p.id === editingId).contactCount : 0
+    founders: founders,
+    createdAt: editingId ? prospects.find(p => p.id === editingId).createdAt : new Date().toISOString()
   };
 
   if (editingId) {
@@ -1355,26 +1157,25 @@ function saveProspect(event) {
   closeModal('prospect-modal');
   renderTable();
   updateDashboard();
-  showToast(editingId ? 'Prospect updated!' : 'Prospect added!', 'success');
+  showToast(editingId ? 'Company updated!' : 'Company added!', 'success');
 }
 
 function deleteProspect(id) {
-  if (!confirm('Are you sure you want to delete this prospect?')) return;
+  if (!confirm('Are you sure you want to delete this company and all its founders?')) return;
   
   prospects = prospects.filter(p => p.id !== id);
   saveData();
   renderTable();
   updateDashboard();
-  showToast('Prospect deleted', 'success');
+  showToast('Company deleted', 'success');
 }
 
-function markContacted(id) {
-  const prospect = prospects.find(p => p.id === id);
-  if (!prospect) return;
+function markFounderContacted(prospectId, founderIndex) {
+  const prospect = prospects.find(p => p.id === prospectId);
+  if (!prospect || !prospect.founders[founderIndex]) return;
 
-  prospect.status = 'Contacted';
-  prospect.lastContactDate = new Date().toISOString().split('T')[0];
-  prospect.contactCount = (prospect.contactCount || 0) + 1;
+  prospect.founders[founderIndex].contacted = true;
+  prospect.founders[founderIndex].contactedDate = new Date().toISOString().split('T')[0];
   
   saveData();
   renderTable();
@@ -1382,264 +1183,71 @@ function markContacted(id) {
   showToast('Marked as contacted', 'success');
 }
 
-// ==================== IMPORT/EXPORT ====================
-function openImportModal() {
-  document.getElementById('import-modal').classList.add('active');
-  document.getElementById('import-preview').style.display = 'none';
-  document.getElementById('import-confirm-btn').style.display = 'none';
-}
-
-// Drag and drop
-const uploadArea = document.getElementById('upload-area');
-uploadArea.addEventListener('dragover', (e) => {
-  e.preventDefault();
-  uploadArea.classList.add('dragover');
-});
-
-uploadArea.addEventListener('dragleave', () => {
-  uploadArea.classList.remove('dragover');
-});
-
-uploadArea.addEventListener('drop', (e) => {
-  e.preventDefault();
-  uploadArea.classList.remove('dragover');
-  const file = e.dataTransfer.files[0];
-  if (file) {
-    processFile(file);
-  }
-});
-
-function handleFileUpload(event) {
-  const file = event.target.files[0];
-  if (file) {
-    processFile(file);
-  }
-}
-
-function processFile(file) {
-  const reader = new FileReader();
+function sendEmailToFounder(prospectId, founderIndex) {
+  const prospect = prospects.find(p => p.id === prospectId);
+  if (!prospect || !prospect.founders[founderIndex]) return;
   
-  reader.onload = function(e) {
-    const data = new Uint8Array(e.target.result);
-    const workbook = XLSX.read(data, { type: 'array' });
-    const firstSheet = workbook.Sheets[workbook.SheetNames[0]];
-    const jsonData = XLSX.utils.sheet_to_json(firstSheet);
-    
-    importedData = jsonData.map(row => ({
-      id: Date.now().toString() + Math.random().toString(36).substr(2, 9),
-      companyName: row['Company'] || row['company'] || row['Company Name'] || '',
-      industry: row['Industry'] || row['industry'] || '',
-      contactName: row['Contact'] || row['contact'] || row['Name'] || row['name'] || '',
-      email: row['Email'] || row['email'] || '',
-      linkedin: row['LinkedIn'] || row['linkedin'] || '',
-      priority: row['Priority'] || row['priority'] || 'Medium',
-      status: row['Status'] || row['status'] || 'New',
-      notes: row['Notes'] || row['notes'] || '',
-      createdAt: new Date().toISOString(),
-      lastContactDate: null,
-      contactCount: 0
-    }));
-    
-    document.getElementById('import-preview').style.display = 'block';
-    document.getElementById('import-data').textContent = JSON.stringify(importedData, null, 2);
-    document.getElementById('import-confirm-btn').style.display = 'inline-flex';
-    document.getElementById('import-count').textContent = importedData.length;
-    
-    showToast(`Loaded ${importedData.length} prospects`, 'success');
-  };
+  const founder = prospect.founders[founderIndex];
   
-  reader.readAsArrayBuffer(file);
+  const subject = encodeURIComponent(`Save 70% on Engineering Costs - ${prospect.companyName}`);
+  const body = encodeURIComponent(`Hi ${founder.name},
+
+I noticed ${prospect.companyName}${prospect.industry ? ` is growing in the ${prospect.industry} space` : ''}.
+
+At Step2Dev, we help European startups save 70%+ on engineering costs by connecting them with elite Indian engineers — fully managed, vetted, and ready to ship from day one.
+
+Would you be open to a quick 15-minute call to explore if this could help ${prospect.companyName} scale faster?
+
+Best regards,
+Yash Kumar
+Founder, Step2Dev
+https://step2dev.com`);
+
+  window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=${founder.email}&su=${subject}&body=${body}`, '_blank');
+  
+  // Mark as contacted
+  markFounderContacted(prospectId, founderIndex);
 }
 
-function confirmImport() {
-  if (importedData && importedData.length > 0) {
-    prospects = [...prospects, ...importedData];
-    saveData();
-    renderTable();
-    updateDashboard();
-    closeModal('import-modal');
-    showToast(`Successfully imported ${importedData.length} prospects!`, 'success');
-    importedData = null;
-  }
-}
-
+// ==================== EXPORT ====================
 function exportData() {
   if (prospects.length === 0) {
     showToast('No data to export', 'error');
     return;
   }
 
-  const exportData = prospects.map(p => ({
-    'Company': p.companyName,
-    'Industry': p.industry,
-    'Contact': p.contactName,
-    'Email': p.email,
-    'LinkedIn': p.linkedin,
-    'Priority': p.priority,
-    'Status': p.status,
-    'Notes': p.notes,
-    'Last Contact': p.lastContactDate || '',
-    'Contact Count': p.contactCount || 0
-  }));
+  const rows = [['Company', 'Industry', 'Location', 'Website', 'Founder Name', 'Founder Title', 'Founder Email', 'Founder LinkedIn', 'Contacted', 'Contact Date', 'Priority', 'Status', 'Notes']];
+  
+  prospects.forEach(p => {
+    p.founders.forEach(f => {
+      rows.push([
+        p.companyName,
+        p.industry || '',
+        p.location || '',
+        p.website || '',
+        f.name,
+        f.title || '',
+        f.email,
+        f.linkedin || '',
+        f.contacted ? 'Yes' : 'No',
+        f.contactedDate || '',
+        p.priority,
+        p.status,
+        p.notes || ''
+      ]);
+    });
+  });
 
-  const ws = XLSX.utils.json_to_sheet(exportData);
-  const wb = XLSX.utils.book_new();
-  XLSX.utils.book_append_sheet(wb, ws, 'Prospects');
-  XLSX.writeFile(wb, `outreach-${new Date().toISOString().split('T')[0]}.xlsx`);
+  const csv = rows.map(row => row.map(cell => `"${cell}"`).join(',')).join('\n');
+  const blob = new Blob([csv], { type: 'text/csv' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `outreach-${new Date().toISOString().split('T')[0]}.csv`;
+  a.click();
+  URL.revokeObjectURL(url);
 
   showToast('Data exported successfully!', 'success');
-}
-
-// ==================== EMAIL FUNCTIONS ====================
-function openEmailModal(prospectId = null) {
-  document.getElementById('email-modal').classList.add('active');
-  
-  // Populate template dropdown
-  const select = document.getElementById('email-template-select');
-  select.innerHTML = '<option value="">-- Select a template --</option>';
-  templates.forEach(t => {
-    const option = document.createElement('option');
-    option.value = t.id;
-    option.textContent = t.name;
-    select.appendChild(option);
-  });
-}
-
-function loadTemplate() {
-  const templateId = document.getElementById('email-template-select').value;
-  if (!templateId) return;
-  
-  const template = templates.find(t => t.id === templateId);
-  if (template) {
-    document.getElementById('email-subject').value = template.subject;
-    document.getElementById('email-body').value = template.body;
-  }
-}
-
-function sendEmail() {
-  const subject = document.getElementById('email-subject').value;
-  const body = document.getElementById('email-body').value;
-  
-  if (!subject || !body) {
-    showToast('Please fill in subject and body', 'error');
-    return;
-  }
-  
-  const encodedSubject = encodeURIComponent(subject);
-  const encodedBody = encodeURIComponent(body);
-  
-  window.open(`https://mail.google.com/mail/?view=cm&fs=1&su=${encodedSubject}&body=${encodedBody}`, '_blank');
-  closeModal('email-modal');
-  showToast('Opening Gmail...', 'success');
-}
-
-function sendEmailToProspect(prospectId) {
-  const prospect = prospects.find(p => p.id === prospectId);
-  if (!prospect) return;
-  
-  const template = templates[0]; // Use first template
-  if (!template) {
-    showToast('No templates available', 'error');
-    return;
-  }
-  
-  let subject = template.subject
-    .replace(/\{\{company\}\}/g, prospect.companyName)
-    .replace(/\{\{name\}\}/g, prospect.contactName)
-    .replace(/\{\{email\}\}/g, prospect.email)
-    .replace(/\{\{industry\}\}/g, prospect.industry);
-    
-  let body = template.body
-    .replace(/\{\{company\}\}/g, prospect.companyName)
-    .replace(/\{\{name\}\}/g, prospect.contactName)
-    .replace(/\{\{email\}\}/g, prospect.email)
-    .replace(/\{\{industry\}\}/g, prospect.industry);
-  
-  const encodedSubject = encodeURIComponent(subject);
-  const encodedBody = encodeURIComponent(body);
-  
-  window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=${prospect.email}&su=${encodedSubject}&body=${encodedBody}`, '_blank');
-  
-  // Mark as contacted
-  markContacted(prospectId);
-}
-
-// ==================== TEMPLATE MANAGEMENT ====================
-function openTemplateModal(templateId = null) {
-  if (templateId) {
-    editingTemplateId = templateId;
-    const template = templates.find(t => t.id === templateId);
-    if (template) {
-      document.getElementById('template-modal-title').textContent = 'Edit Template';
-      document.getElementById('template-id').value = templateId;
-      document.getElementById('template-name').value = template.name;
-      document.getElementById('template-subject').value = template.subject;
-      document.getElementById('template-body').value = template.body;
-    }
-  } else {
-    editingTemplateId = null;
-    document.getElementById('template-modal-title').textContent = 'Create Template';
-    document.getElementById('template-form').reset();
-  }
-  
-  document.getElementById('template-modal').classList.add('active');
-}
-
-function saveTemplate(event) {
-  event.preventDefault();
-  
-  const template = {
-    id: editingTemplateId || Date.now().toString(),
-    name: document.getElementById('template-name').value,
-    subject: document.getElementById('template-subject').value,
-    body: document.getElementById('template-body').value
-  };
-  
-  if (editingTemplateId) {
-    const index = templates.findIndex(t => t.id === editingTemplateId);
-    templates[index] = template;
-  } else {
-    templates.push(template);
-  }
-  
-  saveData();
-  closeModal('template-modal');
-  renderTemplates();
-  showToast(editingTemplateId ? 'Template updated!' : 'Template created!', 'success');
-}
-
-function deleteTemplate(id) {
-  if (!confirm('Are you sure you want to delete this template?')) return;
-  
-  templates = templates.filter(t => t.id !== id);
-  saveData();
-  renderTemplates();
-  showToast('Template deleted', 'success');
-}
-
-function renderTemplates() {
-  const list = document.getElementById('template-list');
-  const empty = document.getElementById('templates-empty');
-  
-  if (templates.length === 0) {
-    list.innerHTML = '';
-    empty.style.display = 'block';
-    return;
-  }
-  
-  empty.style.display = 'none';
-  list.innerHTML = templates.map(t => `
-    <div class="template-item">
-      <div>
-        <div class="template-name">${t.name}</div>
-        <div class="template-preview">${t.subject}</div>
-      </div>
-      <div class="template-actions">
-        <button class="btn btn-sm btn-outline" onclick="openTemplateModal('${t.id}')">Edit</button>
-        <button class="btn btn-sm btn-danger" onclick="deleteTemplate('${t.id}')">Delete</button>
-      </div>
-    </div>
-  `).join('');
 }
 
 // ==================== SETTINGS ====================
@@ -1670,57 +1278,65 @@ function renderTable() {
 
   emptyState.style.display = 'none';
 
-  tbody.innerHTML = filteredProspects.map(prospect => `
-    <tr>
-      <td>
-        <div class="action-btns">
-          <button class="btn btn-sm btn-primary" onclick="sendEmailToProspect('${prospect.id}')" title="Send Email">✉️</button>
-          ${prospect.linkedin ? `<button class="btn btn-sm btn-outline" onclick="window.open('${prospect.linkedin}', '_blank')" title="LinkedIn">🔗</button>` : ''}
-          <button class="btn btn-sm btn-outline" onclick="openEditModal('${prospect.id}')" title="Edit">✏️</button>
-          <button class="btn btn-sm btn-danger" onclick="deleteProspect('${prospect.id}')" title="Delete">🗑️</button>
+  tbody.innerHTML = filteredProspects.map(prospect => {
+    const foundersHtml = prospect.founders.map((founder, index) => `
+      <div style="padding: 8px; border-left: 3px solid ${founder.contacted ? 'var(--success)' : 'var(--border)'}; margin-bottom: 8px; background: var(--bg-hover); border-radius: 6px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+          <div>
+            <strong>${founder.name}</strong> ${founder.title ? `- ${founder.title}` : ''}
+            ${founder.contacted ? '<span style="color: var(--success); font-size: 12px; margin-left: 8px;">✅ Contacted</span>' : ''}
+          </div>
+          <div class="action-btns">
+            <button class="btn btn-sm btn-primary" onclick="sendEmailToFounder('${prospect.id}', ${index})" title="Send Email">✉️</button>
+            ${founder.linkedin ? `<button class="btn btn-sm btn-outline" onclick="window.open('${founder.linkedin}', '_blank')" title="LinkedIn">🔗</button>` : ''}
+            ${!founder.contacted ? `<button class="btn btn-sm btn-success" onclick="markFounderContacted('${prospect.id}', ${index})" title="Mark Contacted">✓</button>` : ''}
+          </div>
         </div>
-      </td>
-      <td><strong>${prospect.companyName}</strong>${prospect.industry ? `<br><small style="color: var(--text-secondary);">${prospect.industry}</small>` : ''}</td>
-      <td>${prospect.contactName}</td>
-      <td>${prospect.email}</td>
-      <td><span class="badge badge-${prospect.status.toLowerCase().replace(' ', '-')}">${prospect.status}</span></td>
-      <td class="priority-${prospect.priority.toLowerCase()}">${prospect.priority}</td>
-      <td>
-        ${prospect.status === 'New' ? '<strong>Send Initial Email</strong>' : 
-          prospect.status === 'Contacted' ? '<strong>Follow up</strong>' :
-          prospect.status === 'Replied' ? '<strong>Continue conversation</strong>' :
-          '<strong>-</strong>'}
-      </td>
-      <td>${prospect.lastContactDate || '-'}</td>
-    </tr>
-  `).join('');
+        <div style="font-size: 13px; color: var(--text-secondary);">${founder.email}</div>
+      </div>
+    `).join('');
+
+    return `
+      <tr>
+        <td><strong>${prospect.companyName}</strong>${prospect.location ? `<br><small style="color: var(--text-secondary);">${prospect.location}</small>` : ''}</td>
+        <td>${prospect.industry || '-'}</td>
+        <td style="max-width: 400px;">${foundersHtml}</td>
+        <td><span class="badge badge-${prospect.status.toLowerCase().replace(' ', '-')}">${prospect.status}</span></td>
+        <td class="priority-${prospect.priority.toLowerCase()}">${prospect.priority}</td>
+        <td>
+          <div class="action-btns">
+            ${prospect.website ? `<button class="btn btn-sm btn-outline" onclick="window.open('${prospect.website}', '_blank')" title="Website">🌐</button>` : ''}
+            <button class="btn btn-sm btn-outline" onclick="openEditModal('${prospect.id}')" title="Edit">✏️</button>
+            <button class="btn btn-sm btn-danger" onclick="deleteProspect('${prospect.id}')" title="Delete">🗑️</button>
+          </div>
+        </td>
+      </tr>
+    `;
+  }).join('');
 }
 
 function updateDashboard() {
-  const today = new Date().toISOString().split('T')[0];
-  
-  let actionsToday = 0;
-  let overdueActions = 0;
+  let totalFounders = 0;
+  let contactedFounders = 0;
   let repliedCount = 0;
   let bookedCount = 0;
-  let activeCount = 0;
 
   prospects.forEach(prospect => {
+    totalFounders += prospect.founders.length;
+    prospect.founders.forEach(f => {
+      if (f.contacted) contactedFounders++;
+    });
     if (prospect.status === 'Replied') repliedCount++;
     if (prospect.status === 'Booked') bookedCount++;
-    if (prospect.status === 'New' || prospect.status === 'Contacted') {
-      activeCount++;
-      actionsToday++;
-    }
   });
 
-  document.getElementById('stat-today').textContent = actionsToday;
-  document.getElementById('stat-overdue').textContent = overdueActions;
-  document.getElementById('stat-total').textContent = prospects.length;
+  document.getElementById('stat-companies').textContent = prospects.length;
+  document.getElementById('stat-founders').textContent = totalFounders;
+  document.getElementById('stat-contacted').textContent = contactedFounders;
   document.getElementById('stat-replied').textContent = repliedCount;
   document.getElementById('stat-booked').textContent = bookedCount;
   document.getElementById('sidebar-total').textContent = prospects.length;
-  document.getElementById('sidebar-active').textContent = activeCount;
+  document.getElementById('sidebar-contacts').textContent = totalFounders;
 }
 
 function applyFilters(returnData = false) {
@@ -1734,8 +1350,8 @@ function applyFilters(returnData = false) {
       const searchableText = `
         ${prospect.companyName} 
         ${prospect.industry} 
-        ${prospect.contactName} 
-        ${prospect.email} 
+        ${prospect.location}
+        ${prospect.founders.map(f => `${f.name} ${f.email}`).join(' ')}
         ${prospect.notes}
       `.toLowerCase();
       if (!searchableText.includes(searchTerm)) return false;
@@ -1770,11 +1386,9 @@ function clearAllData() {
   if (!confirm('Are you sure you want to delete ALL data? This cannot be undone.')) return;
   
   prospects = [];
-  templates = [];
   settings = { email: '', name: '' };
   saveData();
   renderTable();
-  renderTemplates();
   updateDashboard();
   showToast('All data cleared', 'success');
 }
@@ -1793,7 +1407,6 @@ function init() {
   loadData();
   renderTable();
   updateDashboard();
-  renderTemplates();
 }
 
 init();
