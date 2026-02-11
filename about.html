@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>About Us — Step2Dev | Elite Indian Engineers for European Startups</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+<style>
+:root{--blue:#1E3A8A;--blue-dark:#0a1850;--blue-mid:#163070;--blue-light:#2d5be3;--orange:#F97316;--orange-light:#fb923c;--orange-pale:#fff7ed;--white:#fff;--gray-50:#f8fafc;--gray-100:#f1f5f9;--gray-200:#e2e8f0;--gray-400:#94a3b8;--gray-600:#475569;--gray-800:#1e293b;--text:#0f172a;--green:#16a34a;--green-bg:#f0fdf4}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;color:var(--text);background:var(--white);overflow-x:hidden}
+.scroll-line{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--orange),var(--blue));width:0%;z-index:300;transition:width .1s}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 5vw;height:68px;background:rgba(255,255,255,0.94);backdrop-filter:blur(16px);border-bottom:1px solid rgba(30,58,138,0.07);transition:box-shadow .3s}
+nav.scrolled{box-shadow:0 2px 28px rgba(30,58,138,0.1)}
+.nav-logo{font-family:'Syne',sans-serif;font-size:1.45rem;font-weight:800;color:var(--blue);letter-spacing:-0.5px;text-decoration:none}
+.nav-logo span{color:var(--orange)}
+.nav-links{display:flex;gap:1.5rem;list-style:none}
+.nav-links a{font-size:0.82rem;font-weight:500;color:var(--gray-600);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--blue)}
+.nav-cta{background:var(--orange);color:#fff;border:none;border-radius:8px;padding:.55rem 1.4rem;font-size:.85rem;font-weight:700;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;text-decoration:none;white-space:nowrap;box-shadow:0 2px 12px rgba(249,115,22,.3)}
+.nav-cta:hover{background:var(--orange-light);transform:translateY(-1px);box-shadow:0 4px 18px rgba(249,115,22,.4)}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none}
+.nav-hamburger span{display:block;width:24px;height:2px;background:var(--blue);border-radius:2px}
+
+/* HERO */
+.about-hero{min-height:65vh;background:linear-gradient(140deg,#060f35 0%,#0d2060 40%,#1E3A8A 75%,#1a4fa8 100%);position:relative;overflow:hidden;display:flex;align-items:center;padding:120px 5vw 80px}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:64px 64px}
+.blob{position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none}
+.b1{width:480px;height:480px;background:rgba(249,115,22,.15);top:-120px;right:-100px;animation:bf 9s ease-in-out infinite}
+.b2{width:320px;height:320px;background:rgba(45,91,227,.4);bottom:-80px;left:5%;animation:bf 12s ease-in-out infinite reverse}
+@keyframes bf{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-28px) scale(1.06)}}
+.hero-content{position:relative;z-index:2;max-width:800px;margin:0 auto;text-align:center}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(249,115,22,.12);border:1px solid rgba(249,115,22,.38);border-radius:50px;padding:6px 16px;color:#fdba74;font-size:.78rem;font-weight:600;margin-bottom:1.5rem;animation:fu .7s ease both;letter-spacing:.02em}
+.hero-badge::before{content:'';width:7px;height:7px;background:var(--orange);border-radius:50%;animation:pulse 1.6s ease-in-out infinite;flex-shrink:0}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.5)}}
+.hero-h1{font-family:'Syne',sans-serif;font-size:clamp(2.5rem,5vw,3.8rem);font-weight:800;line-height:1.1;color:#fff;margin-bottom:1.5rem;animation:fu .7s ease .15s both}
+.hero-h1 em{font-style:normal;color:var(--orange)}
+.hero-sub{font-size:1.15rem;line-height:1.75;color:rgba(255,255,255,.72);max-width:680px;margin:0 auto 2rem;animation:fu .7s ease .3s both}
+.hero-stats{display:flex;gap:3rem;justify-content:center;flex-wrap:wrap;animation:fu .7s ease .45s both}
+.hs-item{text-align:center}
+.hs-num{font-family:'Syne',sans-serif;font-size:2.8rem;font-weight:800;color:var(--orange);line-height:1}
+.hs-label{font-size:.82rem;color:rgba(255,255,255,.55);margin-top:6px}
+@keyframes fu{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+
+/* SECTION BASE */
+section{padding:100px 5vw}
+.s-label{display:inline-flex;align-items:center;gap:8px;font-size:.75rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);margin-bottom:.9rem}
+.s-label::before{content:'';width:20px;height:2.5px;background:var(--orange);border-radius:2px}
+.s-title{font-family:'Syne',sans-serif;font-size:clamp(1.9rem,3.8vw,3rem);font-weight:800;line-height:1.12;color:var(--text);margin-bottom:1rem}
+.s-title em{font-style:normal;color:var(--orange)}
+.s-title .blue{color:var(--blue)}
+.s-desc{font-size:1.02rem;line-height:1.8;color:var(--gray-600);max-width:680px;margin-bottom:3rem}
+.reveal{opacity:0;transform:translateY(38px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:none}
+
+/* STORY */
+#story{background:var(--white)}
+.story-inner{max-width:900px;margin:0 auto}
+.story-text{font-size:1.05rem;line-height:1.9;color:var(--gray-600);margin-bottom:2rem}
+.story-text strong{color:var(--text);font-weight:700}
+.story-highlight{background:linear-gradient(135deg,#fff7ed,#fef3c7);border-left:4px solid var(--orange);padding:1.5rem 2rem;border-radius:12px;margin:2rem 0;font-size:1.08rem;line-height:1.75;color:var(--gray-800);font-weight:500}
+
+/* FOUNDERS */
+#founders{background:var(--gray-50)}
+.founders-top{text-align:center;max-width:720px;margin:0 auto 4rem}
+.founders-top .s-desc{margin:0 auto}
+.founders-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;max-width:1100px;margin:0 auto}
+@media(max-width:860px){.founders-grid{grid-template-columns:1fr;gap:2.5rem}}
+.founder-card{background:var(--white);border:2px solid var(--gray-200);border-radius:28px;overflow:hidden;transition:transform .4s,box-shadow .4s,border-color .4s;position:relative}
+.founder-card::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(30,58,138,.04),transparent);opacity:0;transition:opacity .4s;pointer-events:none}
+.founder-card:hover{transform:translateY(-12px) scale(1.02);box-shadow:0 32px 80px rgba(30,58,138,.18);border-color:var(--orange)}
+.founder-card:hover::after{opacity:1}
+.fc-banner{height:200px;position:relative;overflow:hidden}
+.fc-banner.yash{background:linear-gradient(140deg,#060f35,#1E3A8A)}
+.fc-banner.naman{background:linear-gradient(140deg,#0f2260,#2d5be3)}
+.fc-pattern{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.08) 1px,transparent 1px);background-size:24px 24px;animation:patternMove 20s linear infinite}
+@keyframes patternMove{0%{background-position:0 0}100%{background-position:24px 24px}}
+.fc-badge{position:absolute;top:16px;right:16px;background:rgba(249,115,22,.2);border:1px solid rgba(249,115,22,.4);color:#fdba74;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border-radius:20px;padding:5px 14px;backdrop-filter:blur(8px)}
+.fc-avatar{width:130px;height:130px;border-radius:50%;border:5px solid #fff;position:absolute;bottom:-65px;left:50%;transform:translateX(-50%);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:3rem;font-weight:800;color:#fff;box-shadow:0 12px 40px rgba(0,0,0,.2);transition:transform .4s}
+.founder-card:hover .fc-avatar{transform:translateX(-50%) scale(1.08)}
+.fc-avatar.yash{background:linear-gradient(135deg,#F97316,#ea580c)}
+.fc-avatar.naman{background:linear-gradient(135deg,#2d5be3,#1E3A8A)}
+.fc-body{padding:5.5rem 2.5rem 2.5rem;text-align:center}
+.fc-name{font-family:'Syne',sans-serif;font-size:1.65rem;font-weight:800;margin-bottom:.4rem}
+.fc-title{font-size:.95rem;color:var(--gray-600);margin-bottom:1.5rem;font-weight:500}
+.fc-skills{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-bottom:1.8rem}
+.skill-pill{background:var(--gray-100);color:var(--gray-800);font-size:.75rem;font-weight:600;border-radius:20px;padding:6px 14px;border:1px solid var(--gray-200);transition:all .2s}
+.skill-pill:hover{background:var(--orange);color:#fff;border-color:var(--orange);transform:translateY(-2px)}
+.fc-bio{font-size:.92rem;line-height:1.75;color:var(--gray-600);margin-bottom:1.5rem;text-align:left}
+.fc-quote{font-size:.9rem;line-height:1.7;color:var(--blue);font-style:italic;border-left:4px solid var(--orange);padding-left:1.2rem;text-align:left;font-weight:500}
+.fc-contact{display:flex;gap:12px;justify-content:center;margin-top:1.8rem}
+.fc-link{width:42px;height:42px;border:1.5px solid var(--gray-200);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--gray-600);text-decoration:none;transition:all .3s}
+.fc-link:hover{background:var(--blue);border-color:var(--blue);color:#fff;transform:translateY(-3px)}
+.fc-link svg{width:18px;height:18px;fill:currentColor}
+
+/* VALUES */
+#values{background:var(--white)}
+.values-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem}
+.value-card{background:var(--white);border:2px solid var(--gray-200);border-radius:24px;padding:2.5rem;transition:all .35s;position:relative;overflow:hidden}
+.value-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:4px;background:linear-gradient(90deg,var(--orange),var(--blue));transform:scaleX(0);transform-origin:left;transition:transform .35s}
+.value-card:hover{transform:translateY(-10px);box-shadow:0 24px 60px rgba(30,58,138,.12);border-color:var(--orange)}
+.value-card:hover::before{transform:scaleX(1)}
+.value-icon{width:70px;height:70px;border-radius:18px;background:linear-gradient(135deg,var(--orange),#ea580c);display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;box-shadow:0 8px 24px rgba(249,115,22,.3);font-size:2rem;transition:transform .35s}
+.value-card:hover .value-icon{transform:scale(1.1) rotate(5deg)}
+.value-title{font-family:'Syne',sans-serif;font-size:1.25rem;font-weight:800;margin-bottom:.8rem}
+.value-desc{font-size:.95rem;line-height:1.75;color:var(--gray-600)}
+
+/* TIMELINE */
+#timeline{background:var(--gray-50)}
+.timeline-wrap{max-width:900px;margin:0 auto;position:relative;padding-left:3rem}
+.timeline-wrap::before{content:'';position:absolute;left:12px;top:0;bottom:0;width:3px;background:linear-gradient(180deg,var(--orange),var(--blue));border-radius:3px}
+.timeline-item{position:relative;margin-bottom:3rem;animation:fu .7s ease both}
+.timeline-item:nth-child(1){animation-delay:.1s}
+.timeline-item:nth-child(2){animation-delay:.2s}
+.timeline-item:nth-child(3){animation-delay:.3s}
+.timeline-item:nth-child(4){animation-delay:.4s}
+.timeline-dot{position:absolute;left:-3rem;top:8px;width:28px;height:28px;border-radius:50%;background:var(--white);border:4px solid var(--orange);box-shadow:0 0 0 4px rgba(249,115,22,.15);z-index:2;transition:transform .3s}
+.timeline-item:hover .timeline-dot{transform:scale(1.25)}
+.timeline-content{background:var(--white);border:1.5px solid var(--gray-200);border-radius:16px;padding:1.8rem;transition:all .3s}
+.timeline-item:hover .timeline-content{border-color:var(--orange);box-shadow:0 12px 36px rgba(30,58,138,.1);transform:translateX(8px)}
+.timeline-year{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:800;color:var(--orange);margin-bottom:.5rem}
+.timeline-title{font-family:'Syne',sans-serif;font-size:1.15rem;font-weight:700;margin-bottom:.6rem}
+.timeline-desc{font-size:.92rem;line-height:1.7;color:var(--gray-600)}
+
+/* CULTURE */
+#culture{background:linear-gradient(140deg,#060f35 0%,#0d2060 50%,#1E3A8A 100%);position:relative;overflow:hidden}
+#culture .hero-grid{opacity:.4}
+.culture-inner{position:relative;z-index:2}
+.culture-top{text-align:center;max-width:720px;margin:0 auto 4rem}
+.culture-top .s-label{color:#fdba74;justify-content:center}
+.culture-top .s-label::before{background:#fdba74}
+.culture-top .s-title{color:#fff}
+.culture-top .s-desc{color:rgba(255,255,255,.68);margin:0 auto}
+.culture-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem}
+.culture-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:2rem;backdrop-filter:blur(10px);transition:all .3s;text-align:center}
+.culture-card:hover{background:rgba(255,255,255,.1);transform:translateY(-8px);box-shadow:0 20px 50px rgba(0,0,0,.3)}
+.culture-emoji{font-size:3rem;margin-bottom:1rem;display:inline-block;transition:transform .3s}
+.culture-card:hover .culture-emoji{transform:scale(1.15) rotate(-5deg)}
+.culture-title{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:800;color:#fff;margin-bottom:.6rem}
+.culture-desc{font-size:.88rem;line-height:1.7;color:rgba(255,255,255,.65)}
+
+/* CTA */
+#cta{background:var(--white);padding:80px 5vw}
+.cta-card{background:linear-gradient(135deg,#fff7ed,#fef3c7);border:2px solid rgba(249,115,22,.22);border-radius:28px;padding:4rem 3rem;text-align:center;max-width:900px;margin:0 auto;position:relative;overflow:hidden}
+.cta-card::before{content:'';position:absolute;top:-50%;right:-50%;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(249,115,22,.15),transparent);animation:bf 8s ease-in-out infinite}
+.cta-content{position:relative;z-index:2}
+.cta-title{font-family:'Syne',sans-serif;font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:800;margin-bottom:1rem;line-height:1.2}
+.cta-title em{font-style:normal;color:var(--orange)}
+.cta-desc{font-size:1.08rem;line-height:1.75;color:var(--gray-600);max-width:600px;margin:0 auto 2rem}
+.cta-btn{display:inline-block;background:var(--orange);color:#fff;font-weight:700;font-size:1.05rem;padding:1.1rem 2.5rem;border-radius:12px;text-decoration:none;box-shadow:0 8px 28px rgba(249,115,22,.4);transition:all .3s;position:relative;overflow:hidden}
+.cta-btn::after{content:'';position:absolute;inset:0;background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.25) 50%,transparent 70%);transform:translateX(-100%);transition:transform .5s}
+.cta-btn:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(249,115,22,.5)}
+.cta-btn:hover::after{transform:translateX(100%)}
+
+/* FOOTER */
+footer{background:var(--blue-dark);padding:3.5rem 5vw 2rem}
+.footer-inner{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:2rem;margin-bottom:2rem}
+.fb-logo{font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:800;color:#fff}
+.fb-logo span{color:var(--orange)}
+.fb-tagline{font-size:.8rem;color:rgba(255,255,255,.45);margin-top:5px;max-width:220px;line-height:1.6}
+.footer-links h4{font-family:'Syne',sans-serif;font-size:.82rem;font-weight:700;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.9rem}
+.footer-links ul{list-style:none;display:flex;flex-direction:column;gap:.5rem}
+.footer-links a{font-size:.85rem;color:rgba(255,255,255,.55);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--orange)}
+.footer-socials{display:flex;gap:10px;margin-top:1rem}
+.soc-btn{width:38px;height:38px;border:1px solid rgba(255,255,255,.13);border-radius:10px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.55);text-decoration:none;transition:all .2s}
+.soc-btn:hover{background:var(--orange);border-color:var(--orange);color:#fff}
+.soc-btn svg{width:16px;height:16px;fill:currentColor}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.07);padding-top:1.5rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem;font-size:.75rem;color:rgba(255,255,255,.3)}
+
+/* RESPONSIVE */
+@media(max-width:720px){
+  .nav-links{display:none}
+  .nav-hamburger{display:flex}
+  section{padding:72px 5vw}
+  .hero-stats{gap:2rem}
+  .timeline-wrap{padding-left:2.5rem}
+  .timeline-wrap::before{left:10px}
+  .timeline-dot{left:-2.5rem}
+}
+</style>
+</head>
+<body>
+<div class="scroll-line" id="scrollLine"></div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">Step<span>2Dev</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="index.html#how">How It Works</a></li>
+    <li><a href="about.html" style="color:var(--blue);font-weight:700">About Us</a></li>
+    <li><a href="index.html#team">Our Team</a></li>
+    <li><a href="index.html#roi">ROI Calculator</a></li>
+  </ul>
+  <a href="index.html#contact" class="nav-cta">🚀 Hire Engineers Now</a>
+  <button class="nav-hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- HERO -->
+<section class="about-hero">
+  <div class="hero-grid"></div>
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+  <div class="hero-content">
+    <div class="hero-badge">🇮🇳 × 🇫🇷 &nbsp;Now Accepting First Clients • Launch 2025</div>
+    <h1 class="hero-h1">Building the Future of<br/><em>Global Engineering Teams</em></h1>
+    <p class="hero-sub">Two engineers from India. One mission: make world-class technical talent accessible to every startup in Europe — without the inflated costs, legal headaches, or recruitment nightmares.</p>
+    <div class="hero-stats">
+      <div class="hs-item"><div class="hs-num">2025</div><div class="hs-label">Founded</div></div>
+      <div class="hs-item"><div class="hs-num">100+</div><div class="hs-label">Pre-Vetted Engineers</div></div>
+      <div class="hs-item"><div class="hs-num">48h</div><div class="hs-label">Onboarding Time</div></div>
+      <div class="hs-item"><div class="hs-num">74%</div><div class="hs-label">Cost Savings vs Local</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- OUR STORY -->
+<section id="story">
+  <div class="story-inner reveal">
+    <div class="s-label">Our Story</div>
+    <h2 class="s-title">How Step2Dev <em>Came to Life</em></h2>
+    <div class="story-text">
+      <p style="margin-bottom:1.5rem">In 2024, <strong>Yash Kumar</strong> and <strong>Naman Kumar</strong> — two engineers based in Delhi — were watching European startups struggle with the same problem over and over: they needed top-tier engineers, but local hiring was prohibitively expensive, slow, and bureaucratic.</p>
+      <p style="margin-bottom:1.5rem">At the same time, they saw thousands of brilliant Indian engineers — people with degrees from top universities, years of experience with cutting-edge tech stacks, and fluent English — stuck in local markets where salaries didn't reflect their skills.</p>
+      <p style="margin-bottom:1.5rem">The gap was obvious. The solution needed to be built from scratch.</p>
+    </div>
+    <div class="story-highlight reveal">
+      "We're not building another freelancer marketplace where companies gamble on unvetted profiles. We're creating a <strong>fully managed, legally compliant, quality-guaranteed</strong> bridge between Europe's ambition and India's talent." <br/><em>— Yash Kumar, Founder & CEO</em>
+    </div>
+    <div class="story-text reveal">
+      <p style="margin-bottom:1.5rem">So we built <strong>Step2Dev</strong> — a service where European startups get <strong>pre-vetted, English-fluent, technically excellent engineers</strong> at a fraction of local costs, while Step2Dev handles <strong>all</strong> the complexity: payroll, contracts, compliance, performance management, and replacement guarantees.</p>
+      <p>We're now <strong>accepting our first pilot clients</strong> — startups ready to save 70%+ on engineering costs while accessing India's best technical talent. This is just the beginning.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDERS -->
+<section id="founders">
+  <div class="founders-top reveal">
+    <div class="s-label">Meet the Founders</div>
+    <h2 class="s-title">The Engineers Behind<br/><em>Step2Dev</em></h2>
+    <p class="s-desc">Two technical founders who've lived both sides of the hiring gap — and built a company to fix it.</p>
+  </div>
+  <div class="founders-grid">
+    <!-- Yash -->
+    <div class="founder-card reveal">
+      <div class="fc-banner yash">
+        <div class="fc-pattern"></div>
+        <div class="fc-badge">Founder & CEO</div>
+        <div class="fc-avatar yash">YK</div>
+      </div>
+      <div class="fc-body">
+        <div class="fc-name">Yash Kumar</div>
+        <div class="fc-title">DevOps Engineer & Cloud Architect</div>
+        <div class="fc-skills">
+          <span class="skill-pill">AWS</span>
+          <span class="skill-pill">Kubernetes</span>
+          <span class="skill-pill">Terraform</span>
+          <span class="skill-pill">CI/CD</span>
+          <span class="skill-pill">Docker</span>
+          <span class="skill-pill">Python</span>
+        </div>
+        <div class="fc-bio">
+          Yash spent 6+ years building and scaling cloud infrastructure for Indian startups before realizing the same expertise could deliver 10x more value for European companies — if only they had access to it. He founded Step2Dev to make that happen.
+        </div>
+        <div class="fc-quote">"Great infrastructure should be invisible — it just works, at any scale. That's what we deliver."</div>
+        <div class="fc-contact">
+          <a href="https://www.linkedin.com/in/yash-devopsengineer/" target="_blank" class="fc-link" title="LinkedIn">
+            <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="mailto:yash@step2dev.com" class="fc-link" title="Email">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </a>
+          <a href="https://wa.me/9716006371" target="_blank" class="fc-link" title="WhatsApp">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Naman -->
+    <div class="founder-card reveal">
+      <div class="fc-banner naman">
+        <div class="fc-pattern"></div>
+        <div class="fc-badge">Co-Founder & CTO</div>
+        <div class="fc-avatar naman">NK</div>
+      </div>
+      <div class="fc-body">
+        <div class="fc-name">Naman Kumar</div>
+        <div class="fc-title">Senior Software Engineer</div>
+        <div class="fc-skills">
+          <span class="skill-pill">React</span>
+          <span class="skill-pill">Node.js</span>
+          <span class="skill-pill">Python</span>
+          <span class="skill-pill">PostgreSQL</span>
+          <span class="skill-pill">System Design</span>
+          <span class="skill-pill">TypeScript</span>
+        </div>
+        <div class="fc-bio">
+          Naman has 5+ years building full-stack products for fast-growing Indian tech companies. He leads Step2Dev's technical vetting process, ensuring every engineer we place meets the same standards he'd demand on his own team.
+        </div>
+        <div class="fc-quote">"Clean code, clear communication, consistent delivery — that's the Step2Dev standard, period."</div>
+        <div class="fc-contact">
+          <a href="https://www.linkedin.com/in/naman-kumar" target="_blank" class="fc-link" title="LinkedIn">
+            <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="mailto:naman@step2dev.com" class="fc-link" title="Email">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section id="values">
+  <div class="reveal" style="text-align:center;max-width:720px;margin:0 auto 3.5rem">
+    <div class="s-label">Our Values</div>
+    <h2 class="s-title">What <em>Drives Us</em> Every Day</h2>
+    <p class="s-desc">These aren't just words on a wall — they're the principles that guide every hire, every contract, and every client relationship.</p>
+  </div>
+  <div class="values-grid">
+    <div class="value-card reveal">
+      <div class="value-icon">🎯</div>
+      <div class="value-title">Mission-Driven</div>
+      <div class="value-desc">We exist to democratize access to elite engineering talent. Every startup deserves world-class engineers, regardless of geography or budget.</div>
+    </div>
+    <div class="value-card reveal">
+      <div class="value-icon">🔒</div>
+      <div class="value-title">Trust First</div>
+      <div class="value-desc">Signed NDAs, GDPR compliance, IP protection — all standard on day one. Your code and data are sacred to us.</div>
+    </div>
+    <div class="value-card reveal">
+      <div class="value-icon">⚡</div>
+      <div class="value-title">Speed & Quality</div>
+      <div class="value-desc">48-hour onboarding without compromising on technical excellence. We pre-vet so you don't have to gamble.</div>
+    </div>
+    <div class="value-card reveal">
+      <div class="value-icon">📈</div>
+      <div class="value-title">Elastic Scaling</div>
+      <div class="value-desc">Grow from 1 to 20 engineers in weeks. No job posts, no interviews, no severance risk. Pure startup-grade flexibility.</div>
+    </div>
+    <div class="value-card reveal">
+      <div class="value-icon">🤝</div>
+      <div class="value-title">Radical Transparency</div>
+      <div class="value-desc">Weekly reports, Slack access, video calls. You always know what your engineers are building and how they're performing.</div>
+    </div>
+    <div class="value-card reveal">
+      <div class="value-icon">🌍</div>
+      <div class="value-title">Global Mindset</div>
+      <div class="value-desc">We're building a world where talent flows freely across borders — and exceptional work gets rewarded, wherever it happens.</div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section id="timeline">
+  <div class="reveal" style="text-align:center;max-width:720px;margin:0 auto 4rem">
+    <div class="s-label">Our Journey</div>
+    <h2 class="s-title">From Idea to <em>Launch</em></h2>
+    <p class="s-desc">How two engineers are turning frustration with broken hiring into a company that will reshape how startups build teams.</p>
+  </div>
+  <div class="timeline-wrap">
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <div class="timeline-year">Q4 2024</div>
+        <div class="timeline-title">The Idea Takes Shape</div>
+        <div class="timeline-desc">Yash and Naman identify the massive gap between European startups struggling with expensive local hiring and India's world-class engineering talent. Research begins on legal frameworks, pricing models, and vetting processes.</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <div class="timeline-year">Q1 2025</div>
+        <div class="timeline-title">Step2Dev Officially Launches</div>
+        <div class="timeline-desc">Company registered. Website goes live. Built comprehensive vetting framework, legal contracts (NDA, GDPR, IP protection), and onboarding system. Now accepting first pilot clients.</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <div class="timeline-year">Q2 2025</div>
+        <div class="timeline-title">Goal: First 10 Placements</div>
+        <div class="timeline-desc">Target: Onboard 5-10 European startups and successfully place their first engineers. Build case studies, refine processes, and prove the model works at scale.</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <div class="timeline-year">2025-2026</div>
+        <div class="timeline-title">Vision: 100+ Engineers Placed</div>
+        <div class="timeline-desc">Scale operations to support 50-100+ active placements across France, Germany, UK, Switzerland, and the US. Become the go-to solution for European startups hiring offshore talent.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CULTURE -->
+<section id="culture">
+  <div class="hero-grid"></div>
+  <div class="culture-inner">
+    <div class="culture-top reveal">
+      <div class="s-label">Our Culture</div>
+      <h2 class="s-title">How We <em>Work</em></h2>
+      <p class="s-desc">Building a global company means creating a culture that works across timezones, languages, and continents.</p>
+    </div>
+    <div class="culture-grid">
+      <div class="culture-card reveal">
+        <div class="culture-emoji">🚀</div>
+        <div class="culture-title">Move Fast, Build Quality</div>
+        <div class="culture-desc">Speed without sloppiness. We ship fast because we've eliminated waste, not because we cut corners.</div>
+      </div>
+      <div class="culture-card reveal">
+        <div class="culture-emoji">💬</div>
+        <div class="culture-title">Over-Communicate</div>
+        <div class="culture-desc">Remote work demands clarity. We document decisions, share updates proactively, and assume nothing.</div>
+      </div>
+      <div class="culture-card reveal">
+        <div class="culture-emoji">🎓</div>
+        <div class="culture-title">Always Learning</div>
+        <div class="culture-desc">Tech changes daily. We invest in continuous learning for ourselves and every engineer we place.</div>
+      </div>
+      <div class="culture-card reveal">
+        <div class="culture-emoji">🤲</div>
+        <div class="culture-title">Default to Generosity</div>
+        <div class="culture-desc">When in doubt, we give engineers the benefit of the doubt. Trust first, verify second.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="cta-card reveal">
+    <div class="cta-content">
+      <h2 class="cta-title">Be One of Our<br/><em>First Pilot Clients</em></h2>
+      <p class="cta-desc">We're accepting our first 5 pilot clients. Get white-glove service, dedicated support from founders, and exclusive early-bird pricing. Book a 30-minute call with Yash or Naman to see if we're a fit.</p>
+      <a href="index.html#contact" class="cta-btn">🚀 Apply for Pilot Program</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="fb-logo">Step<span>2Dev</span></div>
+      <div class="fb-tagline">Elite Indian Engineers for European Startups. Founded by Yash & Naman Kumar in 2025.</div>
+      <div class="footer-socials">
+        <a href="https://www.linkedin.com/in/yash-devopsengineer/" class="soc-btn" title="LinkedIn"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+        <a href="#" class="soc-btn" title="Twitter/X"><svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg></a>
+        <a href="https://wa.me/9716006371" class="soc-btn" title="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-links">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="index.html#how">How It Works</a></li>
+        <li><a href="index.html#team">Our Team</a></li>
+        <li><a href="index.html#roi">ROI Calculator</a></li>
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="mailto:info@step2dev.com">📧 info@step2dev.com</a></li>
+        <li><a href="https://wa.me/9716006371">📱 +91 97 16 00 63 71</a></li>
+        <li><a href="https://calendly.com/kashyapy564/30min">📅 Free Discovery Call</a></li>
+        <li><a href="#">🇮🇳 Delhi, India</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Step2Dev. All rights reserved.</span>
+    <span>India 🇮🇳 ↔ Europe 🇪🇺 — Built for Startups That Move Fast</span>
+  </div>
+</footer>
+
+<script>
+// Scroll progress
+window.addEventListener('scroll',()=>{
+  const pct=(window.scrollY/(document.body.scrollHeight-window.innerHeight))*100;
+  document.getElementById('scrollLine').style.width=pct+'%';
+  document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>30);
+});
+
+// Scroll reveal
+const revs=document.querySelectorAll('.reveal');
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      setTimeout(()=>e.target.classList.add('visible'),80);
+      obs.unobserve(e.target);
+    }
+  });
+},{threshold:0.08});
+revs.forEach((el,i)=>{
+  el.style.transitionDelay=`${(i%6)*0.1}s`;
+  obs.observe(el);
+});
+
+// Hamburger
+document.getElementById('hamburger').addEventListener('click',()=>{
+  const links=document.querySelector('.nav-links');
+  const open=links.style.display==='flex';
+  links.style.cssText=open?'':`display:flex;flex-direction:column;position:absolute;top:68px;left:0;right:0;background:#fff;padding:1.25rem 5vw;box-shadow:0 12px 32px rgba(0,0,0,.1);border-top:1px solid #e2e8f0;gap:1rem;z-index:199;`;
+});
+document.querySelectorAll('.nav-links a').forEach(a=>{
+  a.addEventListener('click',()=>{document.querySelector('.nav-links').style.cssText='';});
+});
+</script>
+</body>
+</html>
